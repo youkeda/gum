@@ -2,7 +2,7 @@
   "name": "@ykd/gum",
   "version": "0.1.6",
   "private": false,
-  "main": "./dist/components/index.js",
+  "main": "./dist/index.js",
   "files": [
     "dist/*"
   ],
@@ -11,14 +11,15 @@
     "build": "tsc --build tsconfig.build.json"
   },
   "dependencies": {
+    "core-js": "^3.4.3",
     "monaco-editor": "0.18.1",
     "monaco-editor-webpack-plugin": "^1.7.0",
-    "core-js": "^3.4.3",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.2",
     "vue-property-decorator": "^8.3.0"
   },
   "devDependencies": {
+    "@types/node": "^12.12.21",
     "@vue/cli-plugin-babel": "^4.1.0",
     "@vue/cli-plugin-eslint": "^4.1.0",
     "@vue/cli-plugin-typescript": "^4.1.0",
