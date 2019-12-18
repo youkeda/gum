@@ -1,13 +1,23 @@
 {
-  "name": "gum1",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@ykd/gum",
+  "version": "0.1.6",
+  "private": false,
+  "main": "./src/components/index.ts",
+  "typings": "types/index.d.ts",
+  "files": [
+    "dist/*",
+    "src/*",
+    "public/*",
+    "*.json",
+    "*.js"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "build": "vue-cli-service build --target lib --name gum ./src/components/index.ts"
   },
   "dependencies": {
+    "monaco-editor": "0.18.1",
+    "monaco-editor-webpack-plugin": "^1.7.0",
     "core-js": "^3.4.3",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.2",
