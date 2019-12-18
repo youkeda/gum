@@ -1,5 +1,5 @@
 import Vue from "vue";
-import Editor from "./Editor.vue";
+import Editor from "./component/Editor.vue";
 import { VueConstructor } from "vue/types/umd";
 
 interface Component {

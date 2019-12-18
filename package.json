@@ -2,18 +2,13 @@
   "name": "@ykd/gum",
   "version": "0.1.6",
   "private": false,
-  "main": "./src/components/index.ts",
-  "typings": "types/index.d.ts",
+  "main": "./dist/components/index.js",
   "files": [
-    "dist/*",
-    "src/*",
-    "public/*",
-    "*.json",
-    "*.js"
+    "dist/*"
   ],
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name gum ./src/components/index.ts"
+    "build": "tsc --build tsconfig.build.json"
   },
   "dependencies": {
     "monaco-editor": "0.18.1",
