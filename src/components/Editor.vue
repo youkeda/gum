@@ -36,9 +36,9 @@ export default class GumEditor extends Vue {
 
   mounted() {
     this.editor = monaco.editor.create(this.$refs.editor, {
-      value: "123",
+      value: "//123",
       automaticLayout: true,
-      language: "html"
+      language: "java"
     });
   }
 }
