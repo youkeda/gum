@@ -10,7 +10,7 @@ import * as monaco from 'monaco-editor';
   components: {
   }
 })
-export default class App extends Vue {
+export default class GumEditor extends Vue {
   editor!: monaco.editor.IStandaloneCodeEditor;
   $refs!: {
     editor: HTMLElement;

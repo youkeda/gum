@@ -1,14 +1,16 @@
 {
   "name": "@ykd/gum",
-  "version": "0.1.6",
+  "version": "0.1.13",
   "private": false,
-  "main": "./dist/index.js",
+  "main": "./lib/gum.common.js",
   "files": [
-    "dist/*"
+    "lib/*",
+    "types/*"
   ],
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "tsc --build tsconfig.build.json"
+    "build": "rm -rf lib types && vue-cli-service build --target lib --dest lib --name gum ./src/index.ts",
+    "build:ts": "tsc --build tsconfig.build.json"
   },
   "dependencies": {
     "core-js": "^3.4.3",
