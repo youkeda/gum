@@ -1,8 +1,8 @@
 {
   "name": "ykd_gum",
-  "version": "0.1.15",
+  "version": "0.1.17",
   "private": false,
-  "main": "./lib/gum.common.js",
+  "main": "./lib/gum.umd.js",
   "typings": "./types/index.d.ts",
   "files": [
     "lib/*",

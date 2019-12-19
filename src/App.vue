@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <Gum></Gum>
+    <GumEditor></GumEditor>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import Gum from "./components/Editor.vue";
+import {GumEditor} from "./index";
 
 @Component({
   components: {
-    Gum
+    GumEditor
   }
 })
 export default class App extends Vue {}

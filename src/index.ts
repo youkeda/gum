@@ -14,10 +14,10 @@ const GumEditorElements = {
   }
 };
 
-// if (typeof window !== "undefined" && window.Vue) {
-//   // @ts-ignore
-//   window.Vue.use(GumEditorElements, {});
-// }
+if (typeof window !== "undefined" && window.Vue) {
+  // @ts-ignore
+  window.Vue.use(GumEditorElements, {});
+}
 
 export { GumEditor };
 export default GumEditorElements;
