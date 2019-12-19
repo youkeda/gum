@@ -1,8 +1,8 @@
 const MonacoWebpackPlugin = require("monaco-editor-webpack-plugin");
+const path = require("path");
 
 module.exports = {
   parallel: false,
-
   chainWebpack: config => {
     config.module
       .rule("vue")
@@ -37,6 +37,10 @@ module.exports = {
       "css.worker": "monaco-editor/esm/vs/language/css/css.worker",
       "html.worker": "monaco-editor/esm/vs/language/html/html.worker",
       "ts.worker": "monaco-editor/esm/vs/language/typescript/ts.worker"
+    },
+    output: {
+      globalObject: "self",
+      filename: "[name].bundle.js"
     }
   }
 };

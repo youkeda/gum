@@ -4,11 +4,11 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import * as monaco from 'monaco-editor';
+import * as monaco from "monaco-editor";
 
 // @ts-ignore
 self.MonacoEnvironment = {
-  getWorkerUrl: function(moduleId:string, label:string) {
+  getWorkerUrl: function(moduleId: string, label: string) {
     if (label === "json") {
       return "./json.worker.bundle.js";
     }
@@ -26,8 +26,7 @@ self.MonacoEnvironment = {
 };
 
 @Component({
-  components: {
-  }
+  components: {}
 })
 export default class GumEditor extends Vue {
   editor!: monaco.editor.IStandaloneCodeEditor;
@@ -36,11 +35,10 @@ export default class GumEditor extends Vue {
   };
 
   mounted() {
-    
     this.editor = monaco.editor.create(this.$refs.editor, {
       value: "123",
-      automaticLayout:true,
-      language:"html"
+      automaticLayout: true,
+      language: "html"
     });
   }
 }

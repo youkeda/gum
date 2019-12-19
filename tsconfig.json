@@ -2,7 +2,7 @@
   "compilerOptions": {
     "outDir": "./types",
     "target": "esnext",
-    "module": "commonjs",
+    "module": "esnext",
     "strict": true,
     "jsx": "preserve",
     "importHelpers": true,
@@ -19,16 +19,14 @@
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
-    "baseUrl": ".",
+    "baseUrl": "./node_modules",
     "types": ["webpack-env", "node"],
     "paths": {
       "@/*": ["src/*"]
     },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },
-  "include": [
-    "src/index.ts"
-  ],
+  "include": ["src/index.ts"],
   "files": ["src/types/shims-tsx.d.ts", "src/types/shims-vue.d.ts"],
   "exclude": ["node_modules"]
 }

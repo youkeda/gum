@@ -1,22 +1,21 @@
 {
   "name": "ykd_gum",
-  "version": "0.1.17",
+  "version": "0.1.20",
   "private": false,
   "main": "./lib/gum.umd.js",
   "typings": "./types/index.d.ts",
   "files": [
     "lib/*",
-    "types/*"
+    "types/*",
+    "src/*"
   ],
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "rm -rf lib types && vue-cli-service build --target lib --dest lib --name gum ./src/index.ts",
-    "build:ts": "tsc --build tsconfig.build.json"
+    "build": "rm -rf lib types && vue-cli-service build --target lib --dest lib --name gum ./src/index.ts"
   },
   "dependencies": {
     "core-js": "^3.4.3",
     "monaco-editor": "0.18.1",
-    "monaco-editor-webpack-plugin": "^1.7.0",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.2",
     "vue-property-decorator": "^8.3.0"
@@ -28,6 +27,7 @@
     "@vue/cli-plugin-typescript": "^4.1.0",
     "@vue/cli-service": "^4.1.0",
     "@vue/eslint-config-typescript": "^4.0.0",
+    "monaco-editor-webpack-plugin": "^1.7.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "typescript": "~3.5.3",
