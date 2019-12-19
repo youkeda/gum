@@ -30,6 +30,7 @@ module.exports = {
       });
     config.plugin("monaco-editor").use(MonacoWebpackPlugin, [
       {
+        publicPath:"monaco",
         // Languages are loaded on demand at runtime
         languages: [
           "json",
@@ -57,5 +58,8 @@ module.exports = {
         ]
       }
     ]);
+  },
+  configureWebpack: {
+    plugins: [new MonacoWebpackPlugin()]
   }
 };
