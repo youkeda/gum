@@ -19,7 +19,7 @@
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
-    "baseUrl": "./node_modules",
+    "baseUrl": ".",
     "types": ["webpack-env", "node"],
     "paths": {
       "@/*": ["src/*"]
