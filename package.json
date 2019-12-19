@@ -3,6 +3,7 @@
   "version": "0.1.14",
   "private": false,
   "main": "./lib/gum.common.js",
+  "typings": "./types/index.d.ts",
   "files": [
     "lib/*",
     "types/*"
