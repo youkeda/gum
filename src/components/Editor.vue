@@ -6,6 +6,8 @@
 import { Component, Vue } from "vue-property-decorator";
 import * as monaco from 'monaco-editor';
 
+
+
 @Component({
   components: {
   }
@@ -17,6 +19,7 @@ export default class GumEditor extends Vue {
   };
 
   mounted() {
+    
     this.editor = monaco.editor.create(this.$refs.editor, {
       value: "123",
       automaticLayout:true,
