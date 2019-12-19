@@ -16,6 +16,7 @@
   "dependencies": {
     "core-js": "^3.4.3",
     "monaco-editor": "0.18.1",
+    "monaco-editor-webpack-plugin": "^1.7.0",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.2",
     "vue-property-decorator": "^8.3.0"
@@ -27,7 +28,6 @@
     "@vue/cli-plugin-typescript": "^4.1.0",
     "@vue/cli-service": "^4.1.0",
     "@vue/eslint-config-typescript": "^4.0.0",
-    "monaco-editor-webpack-plugin": "^1.7.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "typescript": "~3.5.3",
