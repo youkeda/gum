@@ -11,6 +11,7 @@
   ],
   "scripts": {
     "serve": "vue-cli-service serve",
+    "build:ts": "tsc -p .",
     "build": "rm -rf lib types && vue-cli-service build --target lib --dest lib --name gum ./src/index.ts"
   },
   "dependencies": {

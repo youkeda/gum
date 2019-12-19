@@ -18,7 +18,7 @@
     "removeComments": false,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "sourceMap": true,
+    "sourceMap": false,
     "baseUrl": ".",
     "types": ["webpack-env", "node"],
     "paths": {
@@ -26,7 +26,7 @@
     },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },
-  "include": ["src/index.ts"],
+  "include": ["src/index.ts","src/**/*.vue"],
   "files": ["src/types/shims-tsx.d.ts", "src/types/shims-vue.d.ts"],
   "exclude": ["node_modules"]
 }
