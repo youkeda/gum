@@ -2,6 +2,7 @@ const MonacoWebpackPlugin = require("monaco-editor-webpack-plugin");
 
 module.exports = {
   parallel: false,
+
   chainWebpack: config => {
     config.module
       .rule("vue")
@@ -28,38 +29,14 @@ module.exports = {
         opts.happyPackMode = false;
         return opts;
       });
-    config.plugin("monaco-editor").use(MonacoWebpackPlugin, [
-      {
-        publicPath:"monaco",
-        // Languages are loaded on demand at runtime
-        languages: [
-          "json",
-          "javascript",
-          "html",
-          "xml",
-          "typescript",
-          "java",
-          "python",
-          "css",
-          "scss",
-          "kotlin",
-          "less",
-          "markdown",
-          "shell",
-          "sql",
-          "yaml",
-          "go",
-          "csp",
-          "cpp",
-          "dockerfile",
-          "mysql",
-          "rust",
-          "scheme"
-        ]
-      }
-    ]);
   },
   configureWebpack: {
-    plugins: [new MonacoWebpackPlugin()]
+    entry: {
+      "editor.worker": "monaco-editor/esm/vs/editor/editor.worker.js",
+      "json.worker": "monaco-editor/esm/vs/language/json/json.worker",
+      "css.worker": "monaco-editor/esm/vs/language/css/css.worker",
+      "html.worker": "monaco-editor/esm/vs/language/html/html.worker",
+      "ts.worker": "monaco-editor/esm/vs/language/typescript/ts.worker"
+    }
   }
 };
