@@ -4,6 +4,7 @@ const path = require("path");
 module.exports = {
   parallel: false,
   chainWebpack: config => {
+    config.resolve.alias.set("@", path.resolve(__dirname, "src"));
     config.module
       .rule("vue")
       .use("vue-loader")

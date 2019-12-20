@@ -6,11 +6,10 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import {GumEditor} from "./index";
+import "./components/Editor"
 
 @Component({
   components: {
-    GumEditor
   }
 })
 export default class App extends Vue {}
