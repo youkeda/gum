@@ -1,6 +1,8 @@
  
+
+
 yarn
-yarn build
-git add .
-git commit -am "deploy"
-git push
+
+rm -rf public/monaco-editor
+mkdir public/monaco-editor
+cp -r node_modules/monaco-editor/min public/monaco-editor/min

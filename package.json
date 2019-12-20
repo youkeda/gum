@@ -1,8 +1,8 @@
 {
-  "name": "ykd_gum",
-  "version": "0.1.20",
+  "name": "gum-ui",
+  "version": "0.1.22",
   "private": false,
-  "main": "./src/index.ts",
+  "main": "./lib/gum.umd.js",
   "typings": "./types/index.d.ts",
   "files": [
     "lib/*",

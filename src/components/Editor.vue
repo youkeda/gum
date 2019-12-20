@@ -4,43 +4,35 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import * as monaco from "monaco-editor";
+import { editor } from "monaco-editor/esm/vs/editor/editor.api";
 
-// // @ts-ignore
-// self.MonacoEnvironment = {
-//   getWorkerUrl: function(moduleId: string, label: string) {
-//     if (label === "json") {
-//       return "./json.worker.bundle.js";
-//     }
-//     if (label === "css") {
-//       return "./css.worker.bundle.js";
-//     }
-//     if (label === "html") {
-//       return "./html.worker.bundle.js";
-//     }
-//     if (label === "typescript" || label === "javascript") {
-//       return "./ts.worker.bundle.js";
-//     }
-//     return "./editor.worker.bundle.js";
-//   }
-// };
 
 @Component({
   components: {}
 })
 export default class GumEditor extends Vue {
-  editor!: monaco.editor.IStandaloneCodeEditor;
+  win: any;
+  editor!: editor.IStandaloneCodeEditor;
   $refs!: {
     editor: HTMLElement;
   };
 
   mounted() {
-    this.editor = monaco.editor.create(this.$refs.editor, {
-      value: "//123",
-      automaticLayout: true,
-      language: "java"
-    });
+    this.win = window;
+
+    setTimeout(() => {
+      this.win.require(["vs/editor/editor.main"], () => {
+        const monaco: any = this.win.monaco;
+        this.editor = monaco.editor.create(this.$refs.editor, {
+          value: "//123",
+          automaticLayout: true,
+          language: "java"
+        });
+      });
+    }, 0);
   }
+
+  loadEditor() {}
 }
 </script>
 
