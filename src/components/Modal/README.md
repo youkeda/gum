@@ -9,6 +9,6 @@
 
 ## 全局方法调用
 
-- [] 基础 success，error，loading
+- [] 基础 success，error，confirm，loading
 - [] 支持 timeout 自动销毁
 - [] 支持 自定义 icon
