@@ -1,11 +1,12 @@
 .jc-type {
   display: inline-block;
-  line-height: 1.2rem;
-  min-height: 1.2rem;
+  line-height: 20px;
+  min-height: 20px;
+  font-size: 14px;
 }
 
 .jc-type + .jc-type {
-  margin-left: 0.75rem;
+  margin-left: 20px;
 }
 
 .jc-type.object.closed .header,
@@ -27,11 +28,11 @@
 .jc-string.quote:before,
 .jc-string.quote:after {
   content: '"';
-  color: #111;
+  color: #c78861;
 }
 
 .jc-bareString.string {
-  color: #111;
+  color: #c78861;
 }
 
 .jc-string.toggle {
@@ -40,7 +41,7 @@
 }
 
 .jc-number {
-  color: #0000c0;
+  color: #cb6dcb;
 }
 
 .jc-bool {
@@ -52,9 +53,9 @@
 }
 
 .jc-undefined {
-  color: #aaa;
+  color: #757777;
 }
 
 .jc-null {
-  color: #9c27b0;
+  color: #757777;
 }

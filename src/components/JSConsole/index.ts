@@ -8,6 +8,8 @@ import NumberType from './components/NumberType.vue';
 import ObjectType from './components/ObjectType.vue';
 import FunctionType from './components/FunctionType.vue';
 import BooleanType from './components/BooleanType.vue';
+import ErrorType from './components/ErrorType.vue';
+import PromiseType from './components/PromiseType.vue';
 
 let installed = false;
 // Declare install function executed by Vue.use()
@@ -23,6 +25,8 @@ export function install(vue: typeof Vue): void {
   vue.component('jc-function', FunctionType);
   vue.component('jc-boolean', BooleanType);
   vue.component('jc-object', ObjectType);
+  vue.component('jc-error', ErrorType);
+  vue.component('jc-promise', PromiseType);
 }
 
 const plugin = {

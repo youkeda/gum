@@ -29,12 +29,14 @@ export default class JSConsole extends Vue {
 <style lang="scss">
 @import "./components/types.scss";
 .Line {
-  line-height: 1.4rem;
-  /* padding: 0.6rem;*/
-  border-bottom: 1px solid #eee;
+  line-height: 20px;
+  border-bottom: 1px solid #313233;
   position: relative;
   white-space: pre-wrap;
   overflow-x: auto;
+  background-color: #202122;
+  color: #b4bcc0;
+  padding: 0 20px;
 }
 
 .Line.out:before {
@@ -51,11 +53,11 @@ export default class JSConsole extends Vue {
   user-select: none;
   padding-right: 5px;
   cursor: pointer;
-  color: #2196f3;
+  color: #8a73ff;
 }
 
-.Line .error em,
-.Line .error .bareString {
+.Line .jc-error em,
+.Line .jc-error .bareString {
   color: #f44336;
 }
 
@@ -80,12 +82,12 @@ export default class JSConsole extends Vue {
 }
 
 .jc-group {
-  margin-left: 0.5rem;
+  margin-left: 20px;
   /*margin-top: 0.5rem;*/
 }
 
 .jc-key-value {
-  line-height: 1.2rem;
+  line-height: 20px;
   white-space: nowrap;
   display: flex;
 }
@@ -102,12 +104,12 @@ export default class JSConsole extends Vue {
 .key,
 .index {
   line-height: 1.2rem;
-  color: #979797;
+  color: #d3d4d5;
   margin-right: 0.5rem;
 }
 
 .arb-info {
-  color: #999;
+  color: #d3d4d5;
 }
 
 .Line > .output > .type {

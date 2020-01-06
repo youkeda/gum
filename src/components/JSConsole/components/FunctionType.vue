@@ -18,7 +18,7 @@ import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 })
 export default class JCFunctionType extends Vue {
   @Prop({ default: true }) allowOpen!: boolean;
-  @Prop({ default: [] }) value!: any[];
+  @Prop({ default: () => {} }) value!: any;
   @Prop({ default: true }) shallow!: boolean;
   @Prop({ default: false }) open!: boolean;
 
