@@ -1,0 +1,60 @@
+.jc-type {
+  display: inline-block;
+  line-height: 1.2rem;
+  min-height: 1.2rem;
+}
+
+.jc-type + .jc-type {
+  margin-left: 0.75rem;
+}
+
+.jc-type.object.closed .header,
+.jc-type.object.closed .group,
+.jc-type.object.closed .group > div {
+  display: inline;
+}
+
+.jc-type.closed .type {
+  display: inline;
+}
+
+.jc-string {
+  position: relative;
+  color: #4caf50;
+  white-space: nowrap;
+}
+
+.jc-string.quote:before,
+.jc-string.quote:after {
+  content: '"';
+  color: #111;
+}
+
+.jc-bareString.string {
+  color: #111;
+}
+
+.jc-string.toggle {
+  white-space: normal;
+  white-space: pre-wrap;
+}
+
+.jc-number {
+  color: #0000c0;
+}
+
+.jc-bool {
+  color: #e91e63;
+}
+
+.jc-function.jc-function em {
+  color: #1976d2;
+}
+
+.jc-undefined {
+  color: #aaa;
+}
+
+.jc-null {
+  color: #9c27b0;
+}
