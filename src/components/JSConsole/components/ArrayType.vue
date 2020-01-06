@@ -1,29 +1,37 @@
 <template>
   <div class="jc-type jc-array">
-    <template v-if="!open">
+    <template v-if="!localOpen">
       <div
         class="jc-type ArrayType closed"
         @click="toggle"
       >
         <em>Array</em>
         <span class="arb-info">({{value.length}})</span>
-        [
-        <template v-for="(item, index) in value">
-          <component
-            v-if="index < 10"
-            :key="`array-${index}`"
-            :is="whichType(item)"
-            :value="item"
-          ></component>
+        <template v-if="!shallow">
+          [
+          <template v-for="(item, index) in value">
+            <component
+              v-if="index < 10"
+              :key="`array-${index}`"
+              :is="whichType(item)"
+              :allowOpen="localOpen"
+              :shallow="true"
+              :value="item"
+            ></component>
+            <span
+              v-if="index < 10"
+              :key="`array-span-${index}`"
+              class="sep"
+            >,</span>
+          </template>
+          <span class="js-more arb-info">
+            …
+          </span>
+          ]
         </template>
-        <span>,</span>
-        <span class="js-more arb-info">
-          …
-        </span>
-        ]
       </div>
     </template>
-    <template v-if="open">
+    <template v-if="localOpen">
       <div class="jc-type ArrayType ">
         <div
           @click="toggle"
@@ -61,9 +69,14 @@ import which from "./whichType";
 export default class IDEA extends Vue {
   @Prop({ default: true }) allowOpen!: boolean;
   @Prop({ default: [] }) value!: any[];
-  @Prop({ default: true }) shadow!: boolean;
+  @Prop({ default: false }) shallow!: boolean;
+  @Prop({ default: false }) open!: boolean;
 
-  private open: boolean = false;
+  private localOpen: boolean = false;
+
+  mounted() {
+    this.localOpen = this.open;
+  }
 
   whichType(value: any) {
     return which(value);
@@ -75,7 +88,7 @@ export default class IDEA extends Vue {
     }
     e.stopPropagation();
     e.preventDefault();
-    this.open = !this.open;
+    this.localOpen = !this.localOpen;
   }
 }
 </script>

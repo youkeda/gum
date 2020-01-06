@@ -31,7 +31,7 @@ function whichType(value: any) {
   }
 
   if (value === undefined) {
-    return 'jc-undefine';
+    return 'jc-undefined';
   }
 
   if (value === null) {

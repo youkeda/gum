@@ -1,6 +1,6 @@
 <template>
-  <div class="ide">
-
+  <div class="jc-type jc-number">
+    {{value}}
   </div>
 </template>
 <script lang="ts">
@@ -9,5 +9,7 @@ import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 @Component({
   components: {}
 })
-export default class IDEA extends Vue {}
+export default class JSNumberType extends Vue {
+  @Prop({ default: 0 }) value!: number;
+}
 </script>
