@@ -4,15 +4,15 @@
       v-if="!localOpen"
       class="jc-type jc-object closed"
     >
-      <div v-if="displayName !== 'Object' || shallow">
-        <em @click="toggle">{{displayName}}</em>
+      <template v-if="localDisplayName !== 'Object' || shallow">
+        <em @click="toggle">{{localDisplayName}}</em>
         <span>{{'{ … }'}}</span>
-      </div>
-      <div v-else>
-        <em @click="toggle">{{displayName}}</em>
+      </template>
+      <template v-else>
+        <em @click="toggle">{{localDisplayName}}</em>
         <span>{{'{'}} </span>
         <span
-          class="object-item key-value"
+          class="object-item jc-key-value"
           v-for="(key, index) in props"
           :key="`subtype-${index}`"
         >
@@ -29,28 +29,28 @@
         <span
           key="arrayType-0"
           v-if="Object.keys(value).length > props.length"
-          className="more arb-info"
+          class="more arb-info"
         >
           …
         </span>
         <span>{{'}'}}</span>
-      </div>
+      </template>
     </div>
     <div
       v-else
       class="jc-type jc-object"
     >
-      <div className="header">
-        <em @click="toggle">{{displayName}}</em>
+      <div class="header">
+        <em @click="toggle">{{localDisplayName}}</em>
         <span>{{'{'}}</span>
       </div>
       <div class="jc-group">
         <div
           v-for="key in props"
-          className="object-item key-value"
+          class="object-item jc-key-value"
           :key="`subtype-${key}`"
         >
-          <span className="key">{{key}}:</span>
+          <span class="key">{{key}}:</span>
           <component
             :is="whichType(value[key])"
             :value="value[key]"
@@ -74,19 +74,38 @@ const LIMIT_CLOSED = 5;
 export default class JCObjectType extends Vue {
   @Prop({ default: true }) allowOpen!: boolean;
   @Prop({ default: [] }) value!: any[];
-  @Prop({ default: false }) shallow!: boolean;
+  @Prop({ default: true }) shallow!: boolean;
   @Prop({ default: false }) open!: boolean;
+  @Prop({ default: "" }) type!: string;
+  @Prop({ default: "" }) displayName!: string;
 
   private localOpen: boolean = false;
-  private displayName: string = "Object";
+  private localDisplayName: string = "";
   private props: string[] = [];
 
   mounted() {
+    this.init();
+  }
+
+  init() {
     this.localOpen = this.open;
-    this.displayName = this.value.constructor
-      ? this.value.constructor.name
-      : "Object";
-    this.handleProps();
+    this.localDisplayName = this.displayName;
+
+    if (!this.localDisplayName) {
+      this.localDisplayName = this.value.constructor
+        ? this.value.constructor.name
+        : "Object";
+    }
+  }
+
+  @Watch("displayName")
+  onDisplayNameChange() {
+    this.init();
+  }
+
+  @Watch("value")
+  onValueChange() {
+    this.init();
   }
 
   handleProps() {
@@ -102,8 +121,9 @@ export default class JCObjectType extends Vue {
       }
     });
     if (!this.localOpen) {
-      this.props.splice(LIMIT_CLOSED).sort();
+      this.props.splice(LIMIT_CLOSED);
     }
+    this.props.sort();
   }
 
   whichType(value: any) {

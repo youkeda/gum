@@ -33,6 +33,8 @@ export default class JSConsole extends Vue {
   /* padding: 0.6rem;*/
   border-bottom: 1px solid #eee;
   position: relative;
+  white-space: pre-wrap;
+  overflow-x: auto;
 }
 
 .Line.out:before {

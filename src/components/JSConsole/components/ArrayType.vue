@@ -44,7 +44,7 @@
         </div>
         <div class="jc-group">
           <div
-            class="key-value"
+            class="jc-key-value"
             v-for="(item, index) in value"
             :key="`array-sub-${index}`"
           >
