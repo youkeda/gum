@@ -1,6 +1,6 @@
 <template>
-  <div class="ide">
-
+  <div class="jc-type js-null">
+    null
   </div>
 </template>
 <script lang="ts">
@@ -11,3 +11,6 @@ import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 })
 export default class IDEA extends Vue {}
 </script>
+
+<style lang="scss" scoped>
+</style>

@@ -1,7 +1,7 @@
-import Vue from "vue";
+import Vue from 'vue';
 
 const requireComponent = require.context(
-  "./components/",
+  './components/',
   true,
   /index\.ts$/
   //找到components文件夹下以.vue命名的文件

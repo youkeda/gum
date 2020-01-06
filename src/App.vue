@@ -1,18 +1,26 @@
 <template>
   <div id="app">
-    <GumEditor></GumEditor>
+    <!-- <GumEditor></GumEditor> -->
+    <JSConsole :data="data"></JSConsole>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import "./components/Editor";
-import JSConsole from "./components/JSConsole/index.vue";
+import JSConsole from "./components/JSConsole/JSConsole.vue";
 
 @Component({
-  components: {}
+  components: {
+    JSConsole
+  }
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  private data = [
+    "zhoufan",
+    ["1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1"]
+  ];
+}
 </script>
 
 <style>
