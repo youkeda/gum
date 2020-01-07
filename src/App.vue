@@ -6,9 +6,9 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import "./components/Editor";
-import JSConsole from "./components/JSConsole/JSConsole.vue";
+import { Component, Vue } from 'vue-property-decorator';
+import './components/Editor';
+import JSConsole from './components/JSConsole/JSConsole.vue';
 
 @Component({
   components: {
@@ -19,70 +19,70 @@ export default class App extends Vue {
   private data = [
     undefined,
     null,
-    "zhoufan",
+    'zhoufan \n test',
     [
-      "1",
-      "1",
+      '1\ntest',
+      '1',
       undefined,
       {
-        abc: "123123123",
+        abc: '123123123',
         ccc: 111,
         zhoufan: [
-          "1",
-          "1",
+          '1',
+          '1',
           undefined,
           123,
-          "1",
-          "1",
-          "1",
-          "1",
-          "1",
-          "1",
-          "1",
-          "1",
-          "1"
+          '1',
+          '1',
+          '1',
+          '1',
+          '1',
+          '1',
+          '1',
+          '1',
+          '1'
         ],
-        ddd: "123123123",
+        ddd: '123123123',
         eee: 111,
-        fff: "123123123",
+        fff: '123123123',
         ggg: 111
       },
       123,
-      "1",
-      "1",
-      "1",
-      "1",
-      "1",
-      "1",
-      "1",
-      "1",
-      "1"
+      '1',
+      '1',
+      '1',
+      '1',
+      '1',
+      '1',
+      '1',
+      '1',
+      '1'
     ],
     {
-      abc: "123123123",
+      abc: '123123123',
       ccc: 111,
       zhoufan: [
-        "1",
-        "1",
+        '1',
+        '1',
         undefined,
         123,
-        "1",
-        "1",
-        "1",
-        "1",
-        "1",
-        "1",
-        "1",
-        "1",
-        "1"
+        '1',
+        '1',
+        '1',
+        '1',
+        '1',
+        '1',
+        '1',
+        '1',
+        '1'
       ],
-      ddd: "123123123",
+      ddd: '123123123',
       eee: 111,
-      fff: "123123123",
+      fff: '123123123',
       ggg: 111
     },
     document,
-    new Error("1111"),
+    new Error('1111'),
     this.abc,
     this.abc()
   ];
