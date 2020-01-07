@@ -30,11 +30,11 @@ export default class JSConsole extends Vue {
 @import "./components/types.scss";
 .Line {
   line-height: 20px;
-  border-bottom: 1px solid #313233;
+  border-bottom: 1px solid #44475a;
   position: relative;
   white-space: pre-wrap;
   overflow-x: auto;
-  background-color: #202122;
+  background-color: #282a36;
   color: #b4bcc0;
   padding: 0 20px;
 }
