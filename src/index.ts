@@ -1,14 +1,14 @@
-import Vue from 'vue';
+import { install as editorInstall } from './components/Editor';
+import { install as jsConsoleInstall } from './components/JSConsole';
 
-const requireComponent = require.context(
-  './components/',
-  true,
-  /index\.ts$/
-  //找到components文件夹下以.vue命名的文件
-);
-
-requireComponent.keys().forEach(fileName => {
-  const componentConfig = requireComponent(fileName);
-  const component = componentConfig.default || componentConfig;
-  Vue.component(component.name, component);
-});
+const componentInstallFn = [editorInstall, jsConsoleInstall];
+const install = function(opts = {}) {
+  componentInstallFn.map((fn: Function) => {
+    fn();
+  });
+};
+export default {
+  install,
+  editorInstall,
+  jsConsoleInstall
+};
