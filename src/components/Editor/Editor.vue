@@ -9,16 +9,25 @@
             :class="getActionBtnStatus('project')"
             @click="onActionBtnClick('project')"
           >
-            <img src="@/assets/icon/files.svg" alt />
+            <img
+              src="@/assets/icon/files.svg"
+              alt
+            />
           </a>
         </div>
         <div class="level-item"></div>
       </div>
     </div>
-    <div class="level-item" ref="editor"></div>
+    <div
+      class="level-item"
+      ref="editor"
+    ></div>
     <div class="level-right g-editor-sidebar">
       <span class="g-editor-sidebar-action">1.Web Browser</span>
-      <span class="g-editor-sidebar-action" style="margin:15px -5px;">2.Git</span>
+      <span
+        class="g-editor-sidebar-action"
+        style="margin:15px -5px;"
+      >2.Git</span>
     </div>
   </div>
 </template>
@@ -60,7 +69,7 @@ export default class GumEditor extends Vue {
 
   onActionBtnClick(item: string) {
     this.actionBtnStatus[item] = this.actionBtnStatus[item] ? "" : "active";
-    console.log(this.actionBtnStatus);
+    // console.log(this.actionBtnStatus);
   }
 }
 </script>

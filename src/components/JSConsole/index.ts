@@ -29,11 +29,7 @@ export function install(vue: typeof Vue): void {
   vue.component('jc-promise', PromiseType);
 }
 
-const plugin = {
+// To allow use as module (npm/webpack/etc.) export component
+export default {
   install
 };
-
-Vue.use(plugin);
-
-// To allow use as module (npm/webpack/etc.) export component
-export default widget;

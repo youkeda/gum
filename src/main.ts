@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import App from './App.vue';
-import { install } from './components/JSConsole/index';
+import Gum from './index';
 
-install(Vue);
+Vue.use(Gum);
 
 Vue.config.productionTip = false;
 

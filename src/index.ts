@@ -1,14 +1,14 @@
-import { install as editorInstall } from './components/Editor';
-import { install as jsConsoleInstall } from './components/JSConsole';
+import Vue from 'vue';
+import Editor from './components/Editor';
+import JSConsole from './components/JSConsole';
 
-const componentInstallFn = [editorInstall, jsConsoleInstall];
 const install = function(opts = {}) {
-  componentInstallFn.map((fn: Function) => {
-    fn();
-  });
+  Vue.use(Editor);
+  Vue.use(JSConsole);
 };
+
 export default {
   install,
-  editorInstall,
-  jsConsoleInstall
+  Editor,
+  JSConsole
 };

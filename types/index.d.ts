@@ -1,8 +1,10 @@
-import { install as editorInstall } from './components/Editor';
-import { install as jsConsoleInstall } from './components/JSConsole';
 declare const _default: {
     install: (opts?: {}) => void;
-    editorInstall: typeof editorInstall;
-    jsConsoleInstall: typeof jsConsoleInstall;
+    Editor: {
+        install: typeof import("./components/Editor").install;
+    };
+    JSConsole: {
+        install: typeof import("./components/JSConsole").install;
+    };
 };
 export default _default;
