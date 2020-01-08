@@ -9,7 +9,7 @@ import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 @Component({
   components: {}
 })
-export default class IDEA extends Vue {}
+export default class JCNullTypeWrapper extends Vue {}
 </script>
 
 <style lang="scss" scoped>

@@ -123,6 +123,7 @@ export default class JCObjectType extends Vue {
     if (!this.localOpen) {
       this.props.splice(LIMIT_CLOSED);
     }
+
     this.props.sort();
   }
 

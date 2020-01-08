@@ -47,6 +47,9 @@ function whichType(value: any) {
   }
 
   // TODO DOM nodes, etc.
+  if (type === '[object Object]' && value.hasOwnProperty('_y_type')) {
+    return 'jc-wrapper';
+  }
 
   // everything is eventually an object!
   return 'jc-object';

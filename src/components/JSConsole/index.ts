@@ -10,6 +10,7 @@ import FunctionType from './components/FunctionType.vue';
 import BooleanType from './components/BooleanType.vue';
 import ErrorType from './components/ErrorType.vue';
 import PromiseType from './components/PromiseType.vue';
+import Wrapper from './components/Wrapper.vue';
 
 let installed = false;
 // Declare install function executed by Vue.use()
@@ -27,6 +28,7 @@ export function install(vue: typeof Vue): void {
   vue.component('jc-object', ObjectType);
   vue.component('jc-error', ErrorType);
   vue.component('jc-promise', PromiseType);
+  vue.component('jc-wrapper', Wrapper);
 }
 
 // To allow use as module (npm/webpack/etc.) export component

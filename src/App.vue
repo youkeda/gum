@@ -2,87 +2,100 @@
   <div id="app">
     <!-- <GumEditor></GumEditor> -->
     <JSConsole :data="data"></JSConsole>
+    <iframe src="http://dev.youkeda.com:5000/console.html"></iframe>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import './components/Editor';
-import JSConsole from './components/JSConsole/JSConsole.vue';
-
+import { Component, Vue } from "vue-property-decorator";
+import "./components/Editor";
+import JSConsole from "./components/JSConsole/JSConsole.vue";
+import { stringify } from "./components/JSConsole/stringify";
 @Component({
   components: {
     JSConsole
   }
 })
 export default class App extends Vue {
+  mounted() {
+    document.domain = "youkeda.com";
+    this.data = [];
+    window.addEventListener("message", e => {
+      if (e.origin === "http://dev.youkeda.com:5000") {
+        this.data = this.data.concat(e.data.value);
+        console.log("yyyy", this.data);
+      }
+    });
+  }
   private data = [
+    document,
     undefined,
     null,
-    'zhoufan \n test',
+    "zhoufan \n test",
     [
-      '1\ntest',
-      '1',
+      "1\ntest",
+      "1",
       undefined,
       {
-        abc: '123123123',
+        abc: "123123123",
         ccc: 111,
         zhoufan: [
-          '1',
-          '1',
+          "1",
+          "1",
           undefined,
           123,
-          '1',
-          '1',
-          '1',
-          '1',
-          '1',
-          '1',
-          '1',
-          '1',
-          '1'
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1"
         ],
-        ddd: '123123123',
+        ddd: "123123123",
         eee: 111,
-        fff: '123123123',
+        fff: "123123123",
         ggg: 111
       },
       123,
-      '1',
-      '1',
-      '1',
-      '1',
-      '1',
-      '1',
-      '1',
-      '1',
-      '1'
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1"
     ],
     {
-      abc: '123123123',
+      abc: "123123123",
       ccc: 111,
       zhoufan: [
-        '1',
-        '1',
+        "1",
+        "1",
         undefined,
         123,
-        '1',
-        '1',
-        '1',
-        '1',
-        '1',
-        '1',
-        '1',
-        '1',
-        '1'
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
       ],
-      ddd: '123123123',
+      ddd: "123123123",
       eee: 111,
-      fff: '123123123',
+      fff: "123123123",
       ggg: 111
     },
     document,
-    new Error('1111'),
+    new Error("1111"),
+    document.querySelectorAll("div"),
     this.abc,
     this.abc()
   ];
