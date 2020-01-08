@@ -14,6 +14,6 @@ export default class JCObjectType extends Vue {
     onDisplayNameChange(): void;
     onValueChange(): void;
     handleProps(): void;
-    whichType(value: any): "jc-string" | "jc-number" | "jc-boolean" | "jc-set" | "jc-promise" | "jc-error" | "jc-undefined" | "jc-null" | "jc-array" | "jc-function" | "jc-object";
+    whichType(value: any): "jc-string" | "jc-number" | "jc-boolean" | "jc-set" | "jc-promise" | "jc-error" | "jc-undefined" | "jc-null" | "jc-array" | "jc-function" | "jc-wrapper" | "jc-object";
     toggle(e: any): void;
 }

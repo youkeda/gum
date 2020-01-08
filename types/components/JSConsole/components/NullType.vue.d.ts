@@ -1,3 +1,3 @@
 import { Vue } from "vue-property-decorator";
-export default class IDEA extends Vue {
+export default class JCNullTypeWrapper extends Vue {
 }
