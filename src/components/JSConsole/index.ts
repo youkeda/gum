@@ -31,6 +31,72 @@ export function install(vue: typeof Vue): void {
   vue.component('jc-wrapper', Wrapper);
 }
 
+export function parseWrapper(o: any) {
+  if (!o._y_type) {
+    if (Object.prototype.toString.apply(o) === '[object Array]') {
+      let result: any[] = [];
+      o.map((item: any) => {
+        result.push(parseWrapper(item));
+      });
+      return result;
+    }
+    return o;
+  }
+  const yType = o._y_type;
+  if (yType === 'undefined') {
+    return undefined;
+  } else if (yType === 'null') {
+    return null;
+  }
+
+  if (
+    yType === '[object Boolean]' ||
+    yType === '[object Number]' ||
+    yType === '[object String]' ||
+    yType === '[object Error]' ||
+    yType === '[object Function]'
+  ) {
+    return o.value;
+  }
+
+  if (yType === '[object Object]') {
+    return hanldeObject(o);
+  }
+
+  if (yType === '[object Array]') {
+    return handleArray(o);
+  }
+  if (Object.prototype.toString.apply(o.value) === '[object Array]') {
+    return handleArray(o);
+  }
+
+  if (Object.prototype.toString.apply(o.value) === '[object Object]') {
+    return hanldeObject(o);
+  }
+
+  return null;
+}
+
+function handleArray(raw: any) {
+  let arrayO: any[] = [];
+  if (raw.value) {
+    raw.value.map((item: any) => {
+      arrayO.push(parseWrapper(item));
+    });
+  }
+  return arrayO;
+}
+
+function hanldeObject(raw: any) {
+  let mapO: any = {};
+  if (raw.value) {
+    Object.keys(raw.value).map((key: any) => {
+      mapO[key] = parseWrapper(raw.value[key]);
+    });
+  }
+  return mapO;
+}
+
 // To allow use as module (npm/webpack/etc.) export component
 export default {
   install

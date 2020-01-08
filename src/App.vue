@@ -10,6 +10,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import "./components/Editor";
 import JSConsole from "./components/JSConsole/JSConsole.vue";
+import { parseWrapper } from "./components/JSConsole";
 import { stringify } from "./components/JSConsole/stringify";
 @Component({
   components: {
@@ -23,9 +24,12 @@ export default class App extends Vue {
     window.addEventListener("message", e => {
       if (e.origin === "http://dev.youkeda.com:5000") {
         this.data = this.data.concat(e.data.value);
-        console.log("yyyy", this.data);
       }
     });
+
+    setTimeout(() => {
+      console.log("-----", parseWrapper(this.data));
+    }, 2000);
   }
   private data = [
     document,
