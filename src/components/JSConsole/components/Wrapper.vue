@@ -4,6 +4,9 @@
     :value="value.value"
     :is="type"
     :displayName="sig"
+    :shallow="shallow"
+    :allowOpen="allowOpen"
+    :open="open"
   />
 </template>
 <script lang="ts">
@@ -14,6 +17,9 @@ import which from "./whichType";
 })
 export default class JCTypeWrapper extends Vue {
   @Prop({ default: () => {} }) value!: any;
+  @Prop({ default: false }) shallow!: boolean;
+  @Prop({ default: true }) allowOpen!: boolean;
+  @Prop({ default: false }) open!: boolean;
 
   private type: string = "";
   private sig: string = "";

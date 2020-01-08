@@ -1,5 +1,8 @@
 <template>
-  <div class="jc-type jc-string" :class="{ quote: !bare, bareString: bare }">
+  <div
+    class="jc-type jc-string"
+    :class="{ quote: !bare, bareString: bare, shallow: shallow }"
+  >
     <template v-if="html">
       <div v-html="str" />
     </template>
@@ -9,29 +12,29 @@
   </div>
 </template>
 <script lang="ts">
-import { Component, Vue, Watch, Prop } from 'vue-property-decorator';
+import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 
 @Component({
   components: {}
 })
 export default class JSStringType extends Vue {
-  @Prop({ default: '' }) value!: string;
+  @Prop({ default: "" }) value!: string;
   @Prop({ default: false }) html!: boolean;
   @Prop({ default: false }) bare!: boolean;
   @Prop({ default: false }) shallow!: boolean;
 
-  private str: string = '';
+  private str: string = "";
 
   mounted() {
     this.initMutliLine();
   }
 
-  @Watch('value')
+  @Watch("value")
   onValueChange() {
     this.initMutliLine();
   }
 
-  @Watch('shallow')
+  @Watch("shallow")
   onShallowChange() {
     this.initMutliLine();
   }
@@ -39,7 +42,7 @@ export default class JSStringType extends Vue {
   initMutliLine() {
     this.str = this.value;
     if (this.shallow) {
-      this.str = this.value.replace(/\n/g, ' ↵ ');
+      this.str = this.value.replace(/\n/g, " ↵ ");
     }
   }
 }
