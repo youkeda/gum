@@ -1,0 +1,57 @@
+@function px2rem($px) {
+  $rem: $px / 40;
+  @return #{$rem}rem;
+}
+
+@mixin inputbox {
+  height: px2rem(70);
+  line-height: px2rem(70);
+  font-size: px2rem(32);
+  color: #4a4a4a;
+  letter-spacing: 0;
+  text-align: left;
+  background-color: #fff;
+  border: 1px solid #dfdede;
+  border-radius: px2rem(8);
+
+  padding: 0 px2rem(20);
+  box-sizing: border-box;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+@mixin text-ellipsis($line: 1) {
+  @if $line > 1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  } @else {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    white-space: nowrap;
+  }
+}
+
+@mixin placeholder($color) {
+  &::-webkit-input-placeholder {
+    /* WebKit browsers */
+    color: $color;
+  }
+  &:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: $color;
+  }
+  &::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: $color;
+  }
+  &:-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    color: $color;
+  }
+}
