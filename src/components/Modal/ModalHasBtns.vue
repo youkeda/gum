@@ -78,9 +78,7 @@ export default class ModalHasBtns extends Vue {
   }
 
   cancel() {
-    debugger
     if (!this.closed) {
-      console.log('cancel');
       this.localVisible = false;
       this.closed = true;
       this.$emit('cancel');
@@ -89,7 +87,6 @@ export default class ModalHasBtns extends Vue {
 
   confirm() {
     if (!this.closed) {
-      console.log('confirm');
       this.localVisible = false;
       this.closed = true;
       this.$emit('confirm');
