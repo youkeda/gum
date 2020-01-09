@@ -11,8 +11,8 @@ const install = function(opts = {}) {
   Vue.component(YKDModal.name, YKDModal)
   Vue.component(YKDModalHasBtns.name, YKDModalHasBtns)
   Vue.component(YKDMessage.name, YKDMessage)
-  Vue.prototype.$confirm = showConfirm
-  Vue.prototype.$message = showMessage
+  Vue.prototype.$ykdconfirm = showConfirm
+  Vue.prototype.$ykdmessage = showMessage
 }
 
 export default {
