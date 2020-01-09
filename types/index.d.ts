@@ -6,5 +6,8 @@ declare const _default: {
     JSConsole: {
         install: typeof import("./components/JSConsole").install;
     };
+    Modal: {
+        install: (opts?: {}) => void;
+    };
 };
 export default _default;

@@ -44,7 +44,7 @@ import Modal from './Modal.vue';
     Modal
   }
 })
-export default class Confirm extends Vue {
+export default class YKDConfirm extends Vue {
   @Prop({ default: false })
   visible: boolean = false;
   @Prop({ default: '' })

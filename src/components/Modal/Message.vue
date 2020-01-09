@@ -28,7 +28,7 @@ import Modal from './Modal.vue';
     Modal
   }
 })
-export default class Message extends Vue {
+export default class YKDMessage extends Vue {
   @Prop({ default: false })
   visible: boolean = false;
   @Prop({ default: '' })

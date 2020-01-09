@@ -49,7 +49,7 @@ import Modal from './Modal.vue';
     Modal
   }
 })
-export default class ModalHasBtns extends Vue {
+export default class YKDModalHasBtns extends Vue {
   @Prop({ default: false })
   visible: boolean = false;
   @Prop({ default: '' })

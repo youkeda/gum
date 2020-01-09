@@ -47,7 +47,7 @@
 import { Component, Vue, Watch, Prop } from 'vue-property-decorator'
 
 @Component
-export default class Modal extends Vue {
+export default class YKDModal extends Vue {
   $refs!: {
     modal: HTMLElement
   }
