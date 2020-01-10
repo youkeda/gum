@@ -29,11 +29,11 @@
           <button
             class="cancel"
             @click="cancel"
-          >取消</button>
+          >{{cancelTxt}}</button>
           <button
             class="confirm"
             @click="confirm"
-          >确定</button>
+          >{{confirmTxt}}</button>
         </div>
       </template>
     </Modal>
@@ -63,6 +63,10 @@ export default class YKDModalHasBtns extends Vue {
   customClass?: string;
   @Prop({ default: false })
   closeOnClickModal!: boolean;
+  @Prop({ default: '取消' })
+  cancelTxt?:string
+  @Prop({ default: '确认' })
+  confirmTxt?:string
 
   private localVisible: boolean = false;
   private closed: boolean = true;
@@ -79,7 +83,6 @@ export default class YKDModalHasBtns extends Vue {
 
   cancel() {
     if (!this.closed) {
-      this.localVisible = false;
       this.closed = true;
       this.$emit('cancel');
     }
@@ -87,7 +90,6 @@ export default class YKDModalHasBtns extends Vue {
 
   confirm() {
     if (!this.closed) {
-      this.localVisible = false;
       this.closed = true;
       this.$emit('confirm');
     }

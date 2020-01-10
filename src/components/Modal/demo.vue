@@ -10,6 +10,7 @@
     <Modal
       :title="'titlexxx'"
       :visible="localVisible"
+      confirmTxt="支付"
       @cancel="cancel"
       @confirm="confirm"
     >
@@ -44,32 +45,25 @@ export default class Demo extends Vue {
 
   confirm() {
     this.localVisible = false;
-    console.log('confirm');
   }
 
   openComponentMessage() {
-    this.$message({
+    this.$ykdmessage({
       message: '您有一条未支付的订单！',
-      duration: 1000,
-      cancel: () => {},
-      type: 'loading',
-      iconUrl:
-        'https://qgt-style.oss-cn-hangzhou.aliyuncs.com/img/sandwich/home_m/course_outline.png'
+      duration: 2000,
+      cancel: () => { },
+      type: 'loading'
     });
   }
 
   open() {
-    this.$confirm({
+    this.$ykdconfirm({
       title: '您有一条未支付的订单',
       desc: '(24小时内可无条件退款)',
       cancelTxt: '放弃支付',
       confirmTxt: '立即支付',
-      cancel: () => {
-        console.log('取消');
-      },
-      confirm: () => {
-        console.log('确认');
-      }
+      cancel: () => { },
+      confirm: () => { }
     });
   }
 }

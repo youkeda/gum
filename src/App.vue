@@ -3,7 +3,7 @@
     <!-- <GumEditor></GumEditor> -->
     <JSConsole :data="data"></JSConsole>
     <iframe src="http://dev.youkeda.com:5000/console.html"></iframe>
-    <!-- <Demo /> -->
+    <Demo />
   </div>
 </template>
 

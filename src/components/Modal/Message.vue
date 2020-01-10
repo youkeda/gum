@@ -64,15 +64,15 @@ export default class YKDMessage extends Vue {
           break;
 
         case 'error':
-          icon = '//qgt-style.oss-cn-hangzhou.aliyuncs.com/img/sandwich/home_m/close.png';
+          icon = '//qgt-style.oss-cn-hangzhou.aliyuncs.com/img/sandwich/home_m/fail.png';
           break;
 
         case 'loading':
-          icon = '//qgt-style.oss-cn-hangzhou.aliyuncs.com/img/sandwich/home_m/circle.png';
+          icon = '//qgt-style.oss-cn-hangzhou.aliyuncs.com/img/sandwich/home_m/loading.gif';
           break;
 
         default:
-          icon = '//qgt-style.oss-cn-hangzhou.aliyuncs.com/img/sandwich/home_m/star.png';
+          icon = '//qgt-style.oss-cn-hangzhou.aliyuncs.com/img/sandwich/home_m/message-success.png';
           break;
       }
     }
