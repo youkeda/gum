@@ -26,6 +26,7 @@
 <script lang="ts">
 import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
 import Modal from './ModalHasBtns.vue';
+import { setTimeout } from 'timers';
 
 @Component({
   components: {
@@ -43,15 +44,19 @@ export default class Demo extends Vue {
     this.localVisible = false;
   }
 
-  confirm() {
-    this.localVisible = false;
+  confirm(cb: Function) {
+    setTimeout(() => {
+      this.cancel();
+      cb();
+    }, 3000);
+    return;
   }
 
   openComponentMessage() {
     this.$ykdmessage({
       message: '您有一条未支付的订单！',
       duration: 2000,
-      cancel: () => { },
+      cancel: () => {},
       type: 'loading'
     });
   }
@@ -62,8 +67,8 @@ export default class Demo extends Vue {
       desc: '(24小时内可无条件退款)',
       cancelTxt: '放弃支付',
       confirmTxt: '立即支付',
-      cancel: () => { },
-      confirm: () => { }
+      cancel: () => {},
+      confirm: () => {}
     });
   }
 }

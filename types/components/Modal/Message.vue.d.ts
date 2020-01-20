@@ -1,5 +1,5 @@
 import { Vue } from 'vue-property-decorator';
-export default class Message extends Vue {
+export default class YKDMessage extends Vue {
     visible: boolean;
     appendToDom?: string;
     destroyOnClose: boolean;

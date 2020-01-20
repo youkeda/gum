@@ -1,5 +1,5 @@
 import { Vue } from 'vue-property-decorator';
-export default class Modal extends Vue {
+export default class YKDModal extends Vue {
     $refs: {
         modal: HTMLElement;
     };

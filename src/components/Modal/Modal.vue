@@ -44,79 +44,87 @@
 
 </template>
 <script lang="ts">
-import { Component, Vue, Watch, Prop } from 'vue-property-decorator'
+import { Component, Vue, Watch, Prop } from 'vue-property-decorator';
 
 @Component
 export default class YKDModal extends Vue {
   $refs!: {
-    modal: HTMLElement
-  }
+    modal: HTMLElement;
+  };
 
-  @Prop({ default: false }) visible: boolean = false
-  @Prop({ default: '' }) appendToDom?: string
-  @Prop({ default: 'modal' }) title: string = 'modal'
-  @Prop({ default: false }) destroyOnClose: boolean = false
-  @Prop() customClass?: string
-  @Prop() beforeClose?: Function
-  @Prop({ default: false }) needCloseBtn!: boolean
-  @Prop({ default: false }) closeOnClickModal!: boolean
+  @Prop({ default: false })
+  visible: boolean = false;
+  @Prop({ default: '' })
+  appendToDom?: string;
+  @Prop({ default: 'modal' })
+  title: string = 'modal';
+  @Prop({ default: false })
+  destroyOnClose: boolean = false;
+  @Prop()
+  customClass?: string;
+  @Prop()
+  beforeClose?: Function;
+  @Prop({ default: false })
+  needCloseBtn!: boolean;
+  @Prop({ default: false })
+  closeOnClickModal!: boolean;
 
-  private closed: boolean = true
-  private key: number = 0
+  private closed: boolean = true;
+  private key: number = 0;
 
   @Watch('visible')
   visibleChange() {
     if (this.visible) {
-      this.closed = false
-      this.$emit('open')
+      this.closed = false;
+      this.$emit('open');
       this.$nextTick(() => {
-        this.$refs.modal.scrollTop = 0
-      })
+        this.$refs.modal.scrollTop = 0;
+      });
     } else {
-      if (!this.closed) this.$emit('close')
+      if (!this.closed) this.$emit('close');
       if (this.destroyOnClose) {
         this.$nextTick(() => {
-          this.key++
-        })
+          this.key++;
+        });
       }
     }
   }
 
   handleWrapperClick() {
-    if (!this.closeOnClickModal) return
-    this.handleClose()
+    if (!this.closeOnClickModal) return;
+    this.handleClose();
   }
 
   handleClose() {
     if (typeof this.beforeClose === 'function') {
-      this.beforeClose(this.hide)
+      this.beforeClose(this.hide);
     } else {
-      this.hide(true)
+      this.hide(true);
     }
   }
 
   hide(cancel: boolean) {
     if (cancel !== false) {
-      this.$emit('update:visible', false)
-      this.$emit('close')
-      this.closed = true
+      this.$emit('update:visible', false);
+      this.$emit('close');
+      this.closed = true;
     }
   }
 
   appendTo() {
     if (this.appendToDom) {
-      const dom = document.querySelector(this.appendToDom)
+      const dom = document.querySelector(this.appendToDom);
       if (dom) {
-        dom.appendChild(this.$el)
+        dom.appendChild(this.$el);
       }
     }
   }
 
   afterEnter() {
-    this.$emit('opened')
+    this.$emit('opened');
   }
   afterLeave() {
-    this.$emit('closed')
+    this.$emit('closed');
   }
 }
 </script>

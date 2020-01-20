@@ -64,9 +64,9 @@ export default class YKDModalHasBtns extends Vue {
   @Prop({ default: false })
   closeOnClickModal!: boolean;
   @Prop({ default: '取消' })
-  cancelTxt?:string
+  cancelTxt?: string;
   @Prop({ default: '确认' })
-  confirmTxt?:string
+  confirmTxt?: string;
 
   private localVisible: boolean = false;
   private closed: boolean = true;
@@ -81,6 +81,13 @@ export default class YKDModalHasBtns extends Vue {
     }
   }
 
+  @Watch('localVisible')
+  change() {
+    if (!this.localVisible) {
+      this.cancel();
+    }
+  }
+
   cancel() {
     if (!this.closed) {
       this.closed = true;
@@ -90,8 +97,9 @@ export default class YKDModalHasBtns extends Vue {
 
   confirm() {
     if (!this.closed) {
-      this.closed = true;
-      this.$emit('confirm');
+      this.$emit('confirm', () => {
+        this.closed = true;
+      });
     }
   }
 }

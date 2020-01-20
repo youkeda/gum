@@ -1,5 +1,5 @@
 import { Vue } from 'vue-property-decorator';
-export default class Confirm extends Vue {
+export default class YKDConfirm extends Vue {
     visible: boolean;
     appendToDom?: string;
     title: string;
