@@ -8,6 +8,7 @@ import showConfirm from './modal'
 import showMessage from './message'
 
 const install = function(opts = {}) {
+  console.error('register',YKDModal.name);
   Vue.component(YKDModal.name, YKDModal)
   Vue.component(YKDModalHasBtns.name, YKDModalHasBtns)
   Vue.component(YKDMessage.name, YKDMessage)
