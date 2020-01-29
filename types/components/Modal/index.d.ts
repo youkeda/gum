@@ -1,4 +1,4 @@
-export { default as YKDModal } from './Modal.vue';
+export { default as YKDModal } from "./Modal.vue";
 declare const _default: {
     install: (opts?: {}) => void;
 };
