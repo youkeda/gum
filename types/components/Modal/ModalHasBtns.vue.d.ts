@@ -12,6 +12,7 @@ export default class YKDModalHasBtns extends Vue {
     private closed;
     mounted(): void;
     visibleChange(): void;
+    change(): void;
     cancel(): void;
     confirm(): void;
 }
