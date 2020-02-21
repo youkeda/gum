@@ -17,7 +17,7 @@ let installed = false;
 export function install(vue: typeof Vue): void {
   if (installed) return;
   installed = true;
-  vue.component(widget.name, widget);
+  vue.component('JSConsole', widget);
   vue.component('jc-array', ArrayType);
   vue.component('jc-string', StringType);
   vue.component('jc-null', NullType);
