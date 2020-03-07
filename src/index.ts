@@ -7,8 +7,8 @@ import YKDRightDrawer from './components/RightDrawer/index';
 
 const install = function(opts = {}) {
   Vue.use(Editor);
-  Vue.use(JSConsole);
-  Vue.use(Modal);
+  Vue.use(<any>JSConsole);
+  Vue.use(<any>Modal);
   Vue.use(<any>YKDCenterDrawer);
   Vue.use(<any>YKDRightDrawer);
   // Vue.use(modalRegistry);s

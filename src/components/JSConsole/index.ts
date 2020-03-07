@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import widget from './JSConsole.vue';
+import JSConsole from './JSConsole.vue';
 import ArrayType from './components/ArrayType.vue';
 import StringType from './components/StringType.vue';
 import UndefinedType from './components/UndefinedType.vue';
@@ -13,11 +13,10 @@ import PromiseType from './components/PromiseType.vue';
 import Wrapper from './components/Wrapper.vue';
 
 let installed = false;
-// Declare install function executed by Vue.use()
-export function install(vue: typeof Vue): void {
+(<any>JSConsole).install = function(vue: typeof Vue): void {
   if (installed) return;
   installed = true;
-  vue.component('JSConsole', widget);
+  vue.component('JSConsole', JSConsole);
   vue.component('jc-array', ArrayType);
   vue.component('jc-string', StringType);
   vue.component('jc-null', NullType);
@@ -29,7 +28,7 @@ export function install(vue: typeof Vue): void {
   vue.component('jc-error', ErrorType);
   vue.component('jc-promise', PromiseType);
   vue.component('jc-wrapper', Wrapper);
-}
+};
 
 export function parseWrapper(o: any) {
   if (!o._y_type) {
@@ -97,7 +96,4 @@ function hanldeObject(raw: any) {
   return mapO;
 }
 
-// To allow use as module (npm/webpack/etc.) export component
-export default {
-  install
-};
+export default JSConsole;
