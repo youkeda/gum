@@ -1,10 +1,9 @@
 import Vue from 'vue';
 
 import CenterDrawer from './CenterDrawer.vue';
-const install = function(opts = {}) {
-  Vue.component('CenterDrawer', CenterDrawer);
+
+(<any>CenterDrawer).install = function(opts: any = {}) {
+  Vue.component('YKDCenterDrawer', CenterDrawer);
 };
 
-export default {
-  install
-};
+export default CenterDrawer;

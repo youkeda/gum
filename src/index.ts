@@ -2,18 +2,16 @@ import Vue from 'vue';
 import Editor from './components/Editor';
 import JSConsole from './components/JSConsole';
 import Modal from './components/Modal/index';
-import CenterDrawer from './components/CenterDrawer/index';
-import RightDrawer from './components/RightDrawer/index';
-
-// import modalRegistry from './components/Modal/modal'
+import YKDCenterDrawer from './components/CenterDrawer/index';
+import YKDRightDrawer from './components/RightDrawer/index';
 
 const install = function(opts = {}) {
   Vue.use(Editor);
   Vue.use(JSConsole);
   Vue.use(Modal);
-  Vue.use(CenterDrawer);
-  Vue.use(RightDrawer);
-  // Vue.use(modalRegistry);
+  Vue.use(<any>YKDCenterDrawer);
+  Vue.use(<any>YKDRightDrawer);
+  // Vue.use(modalRegistry);s
 };
 
 export default {
@@ -21,7 +19,6 @@ export default {
   Editor,
   JSConsole,
   Modal,
-  CenterDrawer,
-  RightDrawer
-  // modalRegistry
+  YKDCenterDrawer,
+  YKDRightDrawer
 };

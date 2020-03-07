@@ -1,10 +1,9 @@
 import Vue from 'vue';
 
 import RightDrawer from './RightDrawer.vue';
-const install = function(opts = {}) {
+
+(<any>RightDrawer).install = function(opts: any = {}) {
   Vue.component('RightDrawer', RightDrawer);
 };
 
-export default {
-  install
-};
+export default RightDrawer;
