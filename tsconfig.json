@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    // "outDir": "./types",
+    "outDir": "./test-types",
     "target": "esnext",
     "module": "esnext",
     "strict": true,

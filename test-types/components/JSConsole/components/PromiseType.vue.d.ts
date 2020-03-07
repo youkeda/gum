@@ -7,7 +7,7 @@ export default class JCPromiseType extends Vue {
     private localOpen;
     private promiseValue;
     private status;
-    whichType(value: any): "jc-null" | "jc-boolean" | "jc-number" | "jc-string" | "jc-error" | "jc-object" | "jc-array" | "jc-undefined" | "jc-set" | "jc-promise" | "jc-function" | "jc-wrapper";
+    whichType(value: any): "jc-string" | "jc-number" | "jc-boolean" | "jc-set" | "jc-promise" | "jc-error" | "jc-undefined" | "jc-null" | "jc-array" | "jc-function" | "jc-wrapper" | "jc-object";
     mounted(): void;
     toggle(e: any): void;
     init(): Promise<void>;

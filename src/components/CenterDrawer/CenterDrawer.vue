@@ -36,10 +36,13 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Watch, Vue } from "vue-property-decorator";
+import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
+import { Modal } from 'ant-design-vue';
 
 @Component({
-  components: {}
+  components: {
+    'a-modal': Modal
+  }
 })
 export default class CenterDrawer extends Vue {
   @Prop() private visible?: boolean;
@@ -47,19 +50,19 @@ export default class CenterDrawer extends Vue {
   @Prop() private type?: string;
   private isShow: boolean = true;
   async mounted() {
-    if (this.type === "warn") {
+    if (this.type === 'warn') {
       this.isShow = true;
     }
-    if (this.type === "normal") {
+    if (this.type === 'normal') {
       this.isShow = false;
     }
   }
   showModal() {
-    this.$emit("open");
+    this.$emit('open');
   }
 
   handleCancel() {
-    this.$emit("close");
+    this.$emit('close');
   }
 }
 </script>

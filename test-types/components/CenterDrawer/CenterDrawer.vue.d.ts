@@ -1,4 +1,4 @@
-import { Vue } from "vue-property-decorator";
+import { Vue } from 'vue-property-decorator';
 export default class CenterDrawer extends Vue {
     private visible?;
     private title?;

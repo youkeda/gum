@@ -11,6 +11,15 @@ module.exports = {
       poll: true
     }
   },
+  css: {
+    loaderOptions: {
+      // 向 CSS 相关的 loader 传递选项
+      less: {
+        modifyVars: {},
+        javascriptEnabled: true
+      }
+    }
+  },
   parallel: false,
   chainWebpack: config => {
     config.resolve.alias.set('@', path.resolve(__dirname, 'src'));
