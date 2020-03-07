@@ -9,5 +9,11 @@ declare const _default: {
     Modal: {
         install: (opts?: {}) => void;
     };
+    CenterDrawer: {
+        install: (opts?: {}) => void;
+    };
+    RightDrawer: {
+        install: (opts?: {}) => void;
+    };
 };
 export default _default;
