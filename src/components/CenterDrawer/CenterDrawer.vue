@@ -7,6 +7,7 @@
         v-model="visible"
         @cancel="handleCancel"
         :footer="null"
+        :centered="true"
       >
         <div class="content">
           <slot name="content"></slot>
@@ -36,12 +37,12 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
-import { Modal } from 'ant-design-vue';
+import { Component, Prop, Watch, Vue } from "vue-property-decorator";
+import { Modal } from "ant-design-vue";
 
 @Component({
   components: {
-    'a-modal': Modal
+    "a-modal": Modal
   }
 })
 export default class CenterDrawer extends Vue {
@@ -50,19 +51,19 @@ export default class CenterDrawer extends Vue {
   @Prop() private type?: string;
   private isShow: boolean = true;
   async mounted() {
-    if (this.type === 'warn') {
+    if (this.type === "warn") {
       this.isShow = true;
     }
-    if (this.type === 'normal') {
+    if (this.type === "normal") {
       this.isShow = false;
     }
   }
   showModal() {
-    this.$emit('open');
+    this.$emit("open");
   }
 
   handleCancel() {
-    this.$emit('close');
+    this.$emit("close");
   }
 }
 </script>
