@@ -1,162 +1,72 @@
 <template>
-  <div class="jc-type jc-object ">
-    <div
-      v-if="!localOpen"
-      class="jc-type jc-object closed"
-    >
-      <template v-if="localDisplayName !== 'Object' || shallow">
-        <em @click="toggle">{{localDisplayName}}</em>
-        <span>{{'{ … }'}}</span>
-      </template>
-      <template v-else>
-        <em @click="toggle">{{localDisplayName}}</em>
-        <span>{{'{'}} </span>
-        <span
-          class="object-item jc-key-value"
-          v-for="(key, index) in props"
-          :key="`subtype-${index}`"
-        >
-          <span class="key">{{key}}:</span>
-          <component
-            :is="whichType(value[key])"
-            class="value"
-            :value="value[key]"
-            :allowOpen="localOpen"
-            :shallow="true"
-          ></component>
-          <span class="sep">,</span>
-        </span>
-        <span
-          key="arrayType-0"
-          v-if="Object.keys(value).length > props.length"
-          class="more arb-info"
-        >
-          …
-        </span>
-        <span>{{'}'}}</span>
-      </template>
-    </div>
-    <div
-      v-else
-      class="jc-type jc-object"
-    >
-      <div class="header">
-        <em @click="toggle">{{localDisplayName}}</em>
-        <span>{{'{'}}</span>
+  <div class="jt-type">
+    <jt-wrapper :value="value" :depth="depth">
+      <div slot="key">
+        <span class="expand-icon" @click="expand">X</span> {{ keyTxt }}
       </div>
-      <div class="jc-group">
-        <div
-          v-for="key in props"
-          class="object-item jc-key-value"
-          :key="`subtype-${key}`"
-        >
-          <span class="key">{{key}}:</span>
-          <component
-            :is="whichType(value[key])"
-            :value="value[key]"
-            :shallow="true"
-            :allowOpen="localOpen"
-          ></component>
-        </div>
+      <div slot="value">
+        {{ yValue }}
       </div>
-      <span>{{'}'}}</span>
-    </div>
+    </jt-wrapper>
+    <template v-if="localOpen">
+      <component
+        v-for="(cValue, cKey) in value"
+        :is="whichType(cValue)"
+        :key="`${depth}-${yKey}-${cKey}`"
+        :yKey="cKey"
+        :value="cValue"
+        :depth="depth + 1"
+      ></component>
+    </template>
   </div>
 </template>
 <script lang="ts">
-import { Component, Vue, Watch, Prop } from "vue-property-decorator";
-import which from "./whichType";
+import { Component, Vue, Watch, Prop } from 'vue-property-decorator';
+import which from './whichType';
 
 const LIMIT_CLOSED = 5;
 @Component({
   components: {}
 })
 export default class JCObjectType extends Vue {
-  @Prop({ default: true }) allowOpen!: boolean;
-  @Prop({ default: [] }) value!: any[];
-  @Prop({ default: true }) shallow!: boolean;
-  @Prop({ default: false }) open!: boolean;
-  @Prop({ default: "" }) type!: string;
-  @Prop({ default: "" }) displayName!: string;
+  @Prop({ default: () => {} }) value!: any;
+  @Prop({ default: '' }) yKey!: string;
+  @Prop({ default: 0 }) depth!: number;
 
   private localOpen: boolean = false;
-  private localDisplayName: string = "";
-  private props: string[] = [];
 
-  mounted() {
-    this.init();
-  }
+  mounted() {}
 
-  init() {
-    this.localOpen = this.open;
-    this.localDisplayName = this.displayName;
-
-    if (!this.localDisplayName) {
-      this.localDisplayName = this.value.constructor
-        ? this.value.constructor.name
-        : "Object";
+  get keyTxt() {
+    if (this.yKey) {
+      return this.yKey;
     }
-  }
-
-  @Watch("displayName")
-  onDisplayNameChange() {
-    this.init();
-  }
-
-  @Watch("value")
-  onValueChange() {
-    this.init();
-  }
-
-  handleProps() {
-    if (this.shallow && !this.localOpen) {
-      return;
+    if (this.value.id) {
+      return this.value.id;
     }
-    this.props = this.localOpen
-      ? [...enumerate(this.value)]
-      : Object.keys(this.value);
-    Object.getOwnPropertyNames(this.value).forEach(prop => {
-      if (!this.props.includes(prop)) {
-        this.props.push(prop);
-      }
-    });
-    if (!this.localOpen) {
-      this.props.splice(LIMIT_CLOSED);
+    if (this.value._id) {
+      return this.value._id;
     }
-
-    this.props.sort();
+    return '';
   }
 
   whichType(value: any) {
     return which(value);
   }
 
-  toggle(e: any) {
-    if (!this.allowOpen) {
-      return;
-    }
-    e.stopPropagation();
-    e.preventDefault();
-    this.localOpen = !this.localOpen;
-    this.handleProps();
+  get yValue() {
+    return `{${Object.keys(this.value).length} attributes}`;
   }
-}
 
-function* enumerate(obj: any) {
-  let visited = new Set();
-  while (obj) {
-    for (let key of Reflect.ownKeys(obj)) {
-      if (typeof key === "string") {
-        let desc = Reflect.getOwnPropertyDescriptor(obj, key);
-        if (desc && !visited.has(key)) {
-          visited.add(key);
-          if (desc.enumerable) {
-            yield key;
-          }
-        }
-      }
-    }
-    obj = Reflect.getPrototypeOf(obj);
+  expand() {
+    this.localOpen = !this.localOpen;
   }
 }
 </script>
+<style lang="scss" scoped>
+.jt-type {
+  .expand-icon {
+    cursor: pointer;
+  }
+}
+</style>

@@ -1,82 +1,53 @@
 <template>
   <div class="line">
-    <div>Key</div>
-    <component
-      v-if="type"
-      :value="value.value"
-      :is="type"
-      :displayName="sig"
-      :shallow="shallow"
-      :allowOpen="allowOpen"
-      :open="open"
-    />
-    <div>Type</div>
+    <div class="key" :style="keyStyle">
+      <slot name="key"></slot>
+    </div>
+    <div class="value">
+      <slot name="value"></slot>
+    </div>
+    <div class="type">
+      <slot name="type">{{ type }}</slot>
+    </div>
   </div>
 </template>
 <script lang="ts">
-import { Component, Vue, Watch, Prop } from "vue-property-decorator";
-import which from "./whichType";
+import { Component, Vue, Watch, Prop } from 'vue-property-decorator';
+import which from './whichType';
 @Component({
   components: {}
 })
 export default class JCTypeWrapper extends Vue {
   @Prop({ default: () => {} }) value!: any;
-  @Prop({ default: false }) shallow!: boolean;
-  @Prop({ default: true }) allowOpen!: boolean;
-  @Prop({ default: false }) open!: boolean;
+  @Prop({ default: 0 }) depth!: number;
 
-  private type: string = "";
-  private sig: string = "";
-
-  mounted() {
-    this.initType();
-  }
-  @Watch("value")
-  onValueChange() {
-    this.initType();
+  get keyStyle() {
+    return `padding-left: ${this.depth * 20}px`;
   }
 
-  initType() {
-    let sig = "";
-    let type = "jc-null";
-    const yType = this.value._y_type;
-    if (yType === "[object Boolean]") {
-      type = "jc-boolean";
-    } else if (yType === "[object Number]") {
-      type = "jc-number";
-    } else if (yType === "[object String]") {
-      type = "jc-string";
-    } else if (yType === "[object Error]") {
-      type = "jc-error";
-    } else if (yType === "[object Object]") {
-      type = "jc-object";
-    } else if (yType === "[object Array]") {
-      type = "jc-array";
-    } else if (yType === "[object Function]") {
-      sig = this.value.value.replace(/^function/, "ƒ");
-      type = "jc-object";
-      this.value.value = {};
-    } else if (yType === "undefined") {
-      type = "jc-undefined";
-    } else if (yType === "null") {
-      type = "jc-null";
-    } else {
-      sig = yType;
-      if (
-        Object.prototype.toString.apply(this.value.value) === "[object Array]"
-      ) {
-        type = "jc-array";
-      } else if (
-        Object.prototype.toString.apply(this.value.value) === "[object Object]"
-      ) {
-        type = "jc-object";
-      } else {
-        type = "jc-null";
-      }
+  get type() {
+    let type = 'Null';
+    try {
+      type = {}.toString.call(this.value);
+    } catch (e) {
+      type = '[object Object]';
     }
-
-    this.sig = sig;
-    this.type = type;
+    if (type === '[object Boolean]') {
+      type = 'Bool';
+    } else if (type === '[object Number]') {
+      // TODO 需要根据schema处理
+      type = 'Number';
+    } else if (type === '[object String]') {
+      type = 'String';
+    } else if (type === '[object Object]') {
+      type = 'Object';
+    } else if (type === '[object Array]') {
+      type = 'Array';
+    }
+    return type;
   }
 }
 </script>
+<style lang="scss" scoped>
+@import './style.scss';
+</style>

@@ -1,15 +1,24 @@
 <template>
-  <div class="jt-type jt-string">
-    {{ str }}
+  <div class="jt-type">
+    <jt-wrapper :value="value" :depth="depth">
+      <div slot="key">
+        {{ yKey }}
+      </div>
+      <div slot="value">
+        {{ value }}
+      </div>
+    </jt-wrapper>
   </div>
 </template>
 <script lang="ts">
-import { Component, Vue, Watch, Prop } from "vue-property-decorator";
+import { Component, Vue, Watch, Prop } from 'vue-property-decorator';
 
 @Component({
   components: {}
 })
-export default class JSStringType extends Vue {
-  @Prop({ default: "" }) value!: string;
+export default class JTStringType extends Vue {
+  @Prop({ default: '' }) value!: string;
+  @Prop({ default: '' }) yKey!: string;
+  @Prop({ default: 0 }) depth!: number;
 }
 </script>

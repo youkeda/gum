@@ -1,0 +1,16 @@
+.line {
+  display: flex;
+  height: 20px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #d8d8d8;
+
+  .key,
+  .value,
+  .type {
+    width: 33.33%;
+    text-align: left;
+    border-left: 1px solid #d8d8d8;
+    box-sizing: border-box;
+  }
+}
