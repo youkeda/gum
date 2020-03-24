@@ -1,9 +1,14 @@
 <template>
   <div class="json-tree">
-    <jt-wrapper class="json-tree-header" value="value">
+    <jt-wrapper
+      class="json-tree-header"
+      value="value"
+      valueClass="header-value"
+      typeClass="header-type"
+    >
       <div slot="key">key</div>
-      <div class="value" slot="value">value</div>
-      <div class="type" slot="type">type</div>
+      <div slot="value">value</div>
+      <div slot="type">type</div>
     </jt-wrapper>
     <component
       v-for="(line, index) in data"
@@ -15,8 +20,8 @@
   </div>
 </template>
 <script lang="ts">
-import { Component, Vue, Watch, Prop } from 'vue-property-decorator';
-import which from './components/whichType';
+import { Component, Vue, Watch, Prop } from "vue-property-decorator";
+import which from "./components/whichType";
 @Component({
   components: {}
 })
@@ -28,16 +33,17 @@ export default class JSONTree extends Vue {
   }
 }
 </script>
-<style lang="scss" scoped>
-.json-tree {
-  width: 100%;
 
-  .json-tree-header {
-    .value,
-    .type {
+<style lang="scss" >
+.json-tree {
+  .line {
+    .header-value,
+    .header-type {
       position: relative;
+      border-left: 1px dashed #3d3f4f !important;
+
       &:before {
-        content: '';
+        content: "";
         position: absolute;
         left: 0;
         width: 2px;
@@ -47,6 +53,15 @@ export default class JSONTree extends Vue {
         cursor: ew-resize;
       }
     }
+  }
+}
+</style>
+<style lang="scss" scoped>
+.json-tree {
+  width: 100%;
+
+  .json-tree-header {
+    background-color: #434554;
   }
 }
 </style>

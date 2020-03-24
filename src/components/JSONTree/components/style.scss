@@ -1,16 +1,35 @@
 .line {
   display: flex;
-  height: 20px;
+  height: 26px;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #d8d8d8;
+  color: #ffffff;
 
   .key,
   .value,
   .type {
+    padding: 0 25px;
+    height: 100%;
+    line-height: 26px;
     width: 33.33%;
     text-align: left;
-    border-left: 1px solid #d8d8d8;
+    border-left: 1px dashed #434554;
+    border-bottom: 1px dashed #434554;
     box-sizing: border-box;
+    margin: 0;
+  }
+
+  .key {
+    border-left: none;
+  }
+}
+
+.jt-type {
+  &:nth-child(2n + 1) {
+    background-color: #242733;
+  }
+
+  &:nth-child(2n) {
+    background-color: #2d303d;
   }
 }
