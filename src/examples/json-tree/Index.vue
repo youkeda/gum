@@ -1,14 +1,17 @@
 <template>
   <div>
     <h1>JSONTree</h1>
-    <json-tree :data="data"></json-tree>
+    <json-tree
+      :data="data"
+      :schema="schema"
+    ></json-tree>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import data from './data';
-import GumTree from '@/components/Tree/Index.vue';
+import { Component, Vue } from "vue-property-decorator";
+import result from "./data";
+import GumTree from "@/components/Tree/Index.vue";
 
 @Component({
   components: {
@@ -17,7 +20,8 @@ import GumTree from '@/components/Tree/Index.vue';
 })
 export default class App extends Vue {
   mounted() {}
-  private data: any[] = data;
+  private data: any[] = result.results;
+  private schema: any[] = result.fields;
 }
 </script>
 

@@ -1,8 +1,19 @@
 <template>
   <div class="jt-type">
-    <jt-wrapper :value="value" :depth="depth">
-      <div slot="key">
-        <span class="expand-icon" @click="expand">X</span> {{ keyTxt }}
+    <jt-wrapper
+      :value="value"
+      :depth="depth"
+      :class="{'jt-sep': localOpen}"
+    >
+      <div
+        slot="key"
+        class="jt-expand"
+        @click="expand"
+      >
+        <span
+          class="jt-expand-icon"
+          :class="{'isExapnd': localOpen}"
+        ></span> {{ keyTxt }}
       </div>
       <div slot="value">
         {{ yValue }}
@@ -21,8 +32,8 @@
   </div>
 </template>
 <script lang="ts">
-import { Component, Vue, Watch, Prop } from 'vue-property-decorator';
-import which from './whichType';
+import { Component, Vue, Watch, Prop } from "vue-property-decorator";
+import which from "./whichType";
 
 const LIMIT_CLOSED = 5;
 @Component({
@@ -30,7 +41,7 @@ const LIMIT_CLOSED = 5;
 })
 export default class JCObjectType extends Vue {
   @Prop({ default: () => {} }) value!: any;
-  @Prop({ default: '' }) yKey!: string;
+  @Prop({ default: "" }) yKey!: string;
   @Prop({ default: 0 }) depth!: number;
 
   private localOpen: boolean = false;
@@ -47,7 +58,7 @@ export default class JCObjectType extends Vue {
     if (this.value._id) {
       return this.value._id;
     }
-    return '';
+    return "";
   }
 
   whichType(value: any) {
@@ -64,6 +75,8 @@ export default class JCObjectType extends Vue {
 }
 </script>
 <style lang="scss" scoped>
+@import "./style.scss";
+
 .jt-type {
   .expand-icon {
     cursor: pointer;

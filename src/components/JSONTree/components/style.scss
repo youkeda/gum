@@ -3,18 +3,19 @@
   height: 26px;
   align-items: center;
   justify-content: space-between;
+  font-size: 12px;
   color: #ffffff;
 
   .key,
   .value,
   .type {
+    display: flex;
     padding: 0 25px;
     height: 100%;
     line-height: 26px;
     width: 33.33%;
     text-align: left;
     border-left: 1px dashed #434554;
-    border-bottom: 1px dashed #434554;
     box-sizing: border-box;
     margin: 0;
   }
@@ -32,4 +33,28 @@
   &:nth-child(2n) {
     background-color: #2d303d;
   }
+
+  .jt-expand {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    .jt-expand-icon {
+      display: block;
+      background-image: url(//qgt-style.oss-cn-hangzhou.aliyuncs.com/img/gum/jsonTree/arrow.png);
+      width: 6px;
+      height: 10px;
+      background-size: 100%;
+      margin-right: 5px;
+      transition: transform 100ms ease-in-out;
+    }
+
+    .isExapnd {
+      transform: rotate(90deg);
+    }
+  }
+}
+
+.jt-sep {
+  border-bottom: 1px dashed #434554;
 }

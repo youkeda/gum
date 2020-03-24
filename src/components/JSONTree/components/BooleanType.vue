@@ -1,6 +1,9 @@
 <template>
   <div class="jt-type">
-    <jt-wrapper :value="value" :depth="depth">
+    <jt-wrapper
+      :value="value"
+      :depth="depth"
+    >
       <div slot="key">
         {{ yKey }}
       </div>
@@ -11,14 +14,14 @@
   </div>
 </template>
 <script lang="ts">
-import { Component, Vue, Watch, Prop } from 'vue-property-decorator';
+import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 
 @Component({
   components: {}
 })
 export default class JCBooleanType extends Vue {
   @Prop({ default: true }) value!: boolean;
-  @Prop({ default: '' }) yKey!: string;
+  @Prop({ default: "" }) yKey!: string;
   @Prop({ default: 0 }) depth!: number;
 }
 </script>
