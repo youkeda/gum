@@ -11,25 +11,48 @@
       <div slot="type">type</div>
     </jt-wrapper>
     <component
-      v-for="(line, index) in data"
+      v-for="(match, index) in matchs"
       :key="`line-${index}`"
-      :is="whichType(line)"
-      :value="line"
+      :is="match.type"
+      :innerType="match.innerType"
+      :value="match.value"
       :depth="0"
     ></component>
   </div>
 </template>
 <script lang="ts">
-import { Component, Vue, Watch, Prop } from "vue-property-decorator";
+import { Component, Vue, Watch, Prop, Provide } from "vue-property-decorator";
 import which from "./components/whichType";
+import { ParserFunc } from "./parser";
+import Match from "./model/match";
 @Component({
   components: {}
 })
 export default class JSONTree extends Vue {
   @Prop({ default: () => [] }) data!: any[];
+  @Prop({ default: () => () => {} }) parser!: ParserFunc;
+  @Provide("jtParser") jtParser: ParserFunc = this.parser;
 
-  whichType(value: any) {
-    return which(value);
+  private matchs: Match[] = [];
+
+  mounted() {
+    this.initMatch();
+  }
+
+  @Watch("data")
+  onDataChange() {
+    this.initMatch();
+  }
+
+  initMatch() {
+    this.matchs = [];
+    this.data.map((item, index) => {
+      this.matchs.push({
+        ...which(undefined, item, this.jtParser),
+        key: index,
+        value: item
+      });
+    });
   }
 }
 </script>

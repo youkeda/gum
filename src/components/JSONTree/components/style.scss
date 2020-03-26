@@ -54,7 +54,9 @@
     }
   }
 
-  @each $var in ('number', 'object', 'string', 'boolean', 'array') {
+  @each $var
+    in ('number', 'object', 'string', 'boolean', 'date', 'array', 'key')
+  {
     .jt-key-#{$var} {
       display: flex;
       align-items: center;

@@ -1,49 +1,72 @@
 <template>
-  <div
-    class="jc-type jc-string"
-    :class="{ quote: !bare, bareString: bare, shallow: shallow }"
-  >
-    <template v-if="html">
-      <div v-html="str" />
-    </template>
-    <template v-else>
-      {{ str }}
-    </template>
+  <div class="jt-type">
+    <jt-wrapper
+      :type="type"
+      :depth="depth"
+    >
+      <div
+        slot="key"
+        class="jt-key jt-key-date"
+      >
+        {{ yKey }}
+      </div>
+      <div
+        slot="value"
+        class="jt-value jt-value-object"
+      >
+        {{ value }}
+      </div>
+    </jt-wrapper>
   </div>
 </template>
 <script lang="ts">
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
+import { Tooltip } from "ant-design-vue";
 
 @Component({
-  components: {}
+  components: {
+    "a-tooltip": Tooltip
+  }
 })
-export default class JSStringType extends Vue {
+export default class JTStringType extends Vue {
   @Prop({ default: "" }) value!: string;
-  @Prop({ default: false }) html!: boolean;
-  @Prop({ default: false }) bare!: boolean;
-  @Prop({ default: false }) shallow!: boolean;
+  @Prop({ default: "" }) innerType!: string;
+  @Prop({ default: "" }) yKey!: string;
+  @Prop({ default: 0 }) depth!: number;
 
-  private str: string = "";
-
-  mounted() {
-    this.initMutliLine();
-  }
-
-  @Watch("value")
-  onValueChange() {
-    this.initMutliLine();
-  }
-
-  @Watch("shallow")
-  onShallowChange() {
-    this.initMutliLine();
-  }
-
-  initMutliLine() {
-    this.str = this.value;
-    if (this.shallow) {
-      this.str = this.value.replace(/\n/g, " ↵ ");
-    }
+  get type() {
+    return this.innerType || "Date";
   }
 }
 </script>
+<style lang="scss">
+.tooltip {
+  max-width: 500px;
+  .ant-tooltip-arrow {
+    border-bottom-color: #464a5f;
+  }
+  .ant-tooltip-inner {
+    display: flex;
+    align-items: center;
+    background: #464a5f;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    font-size: 12px;
+    word-break: break-all;
+  }
+}
+</style>
+<style lang="scss" scoped>
+@import "./style.scss";
+
+.jt-value-string {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  white-space: nowrap;
+}
+
+.jt-tooltip {
+  white-space: pre-wrap;
+}
+</style>

@@ -1,12 +1,13 @@
 <template>
   <div class="jt-type">
     <jt-wrapper
-      :value="value"
+      :type="type"
       :depth="depth"
     >
       <div
         slot="key"
         class="jt-key jt-key-string"
+        :class="{'jt-key-key': isKey}"
       >
         {{ yKey }}
       </div>
@@ -39,19 +40,29 @@ import { Tooltip } from "ant-design-vue";
 })
 export default class JTStringType extends Vue {
   @Prop({ default: "" }) value!: string;
+  @Prop({ default: "" }) innerType!: string;
   @Prop({ default: "" }) yKey!: string;
   @Prop({ default: 0 }) depth!: number;
 
+  get isKey() {
+    return this.yKey === "id" || this.yKey === "_id";
+  }
+
   get formatValue() {
+    if (!this.value) {
+      return "";
+    }
     if (
       (this.value.startsWith("{") && this.value.endsWith("}")) ||
       (this.value.startsWith("[") && this.value.endsWith("]"))
     ) {
-      let result = JSON.stringify(JSON.parse(this.value), null, 4);
-      console.log(result);
-      return result;
+      return JSON.stringify(JSON.parse(this.value), null, 4);
     }
     return this.value;
+  }
+
+  get type() {
+    return this.innerType || "String";
   }
 }
 </script>

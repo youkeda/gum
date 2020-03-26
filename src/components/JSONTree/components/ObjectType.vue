@@ -1,7 +1,7 @@
 <template>
   <div class="jt-type">
     <jt-wrapper
-      :value="value"
+      type="Object"
       :depth="depth"
       :class="{'jt-sep': localOpen}"
     >
@@ -25,19 +25,23 @@
     </jt-wrapper>
     <template v-if="localOpen">
       <component
-        v-for="(cValue, cKey) in value"
-        :is="whichType(cValue)"
-        :key="`${depth}-${yKey}-${cKey}`"
-        :yKey="cKey"
-        :value="cValue"
+        v-for="match in matchs"
+        :is="match.type"
+        :innerType="match.innerType"
+        :key="`${depth}-${yKey}-${match.key}`"
+        :yKey="match.key"
+        :value="match.value"
         :depth="depth + 1"
       ></component>
     </template>
   </div>
 </template>
 <script lang="ts">
-import { Component, Vue, Watch, Prop } from "vue-property-decorator";
+import { Component, Vue, Watch, Prop, Inject } from "vue-property-decorator";
 import which from "./whichType";
+import Field from "../model/field";
+import { ParserFunc } from "../parser";
+import Match from "../model/match";
 
 const LIMIT_CLOSED = 5;
 @Component({
@@ -47,10 +51,10 @@ export default class JCObjectType extends Vue {
   @Prop({ default: () => {} }) value!: any;
   @Prop({ default: "" }) yKey!: string;
   @Prop({ default: 0 }) depth!: number;
+  @Inject("jtParser") jtParser!: ParserFunc;
 
   private localOpen: boolean = false;
-
-  mounted() {}
+  private matchs: Match[] = [];
 
   get keyTxt() {
     if (this.yKey) {
@@ -65,16 +69,32 @@ export default class JCObjectType extends Vue {
     return "";
   }
 
-  whichType(value: any) {
-    return which(value);
-  }
-
   get yValue() {
     return `{${Object.keys(this.value).length} attributes}`;
   }
 
   expand() {
     this.localOpen = !this.localOpen;
+  }
+
+  mounted() {
+    this.initMatch();
+  }
+
+  @Watch("data")
+  onDataChange() {
+    this.initMatch();
+  }
+
+  initMatch() {
+    this.matchs = [];
+    Object.keys(this.value).map((key, index) => {
+      this.matchs.push({
+        ...which(key, this.value[key], this.jtParser),
+        key: key,
+        value: this.value[key]
+      });
+    });
   }
 }
 </script>

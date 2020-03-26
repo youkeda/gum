@@ -28,7 +28,7 @@ import which from "./whichType";
   components: {}
 })
 export default class JCTypeWrapper extends Vue {
-  @Prop({ default: () => {} }) value!: any;
+  @Prop({ default: "" }) type!: string;
   @Prop({ default: 0 }) depth!: number;
   @Prop({ default: "" }) keyClass!: string;
   @Prop({ default: "" }) valueClass!: string;
@@ -36,28 +36,6 @@ export default class JCTypeWrapper extends Vue {
 
   get keyStyle() {
     return `padding-left: ${this.depth * 20 + 25}px`;
-  }
-
-  get type() {
-    let type = "Null";
-    try {
-      type = {}.toString.call(this.value);
-    } catch (e) {
-      type = "[object Object]";
-    }
-    if (type === "[object Boolean]") {
-      type = "Bool";
-    } else if (type === "[object Number]") {
-      // TODO 需要根据schema处理
-      type = "Number";
-    } else if (type === "[object String]") {
-      type = "String";
-    } else if (type === "[object Object]") {
-      type = "Object";
-    } else if (type === "[object Array]") {
-      type = "Array";
-    }
-    return type;
   }
 }
 </script>

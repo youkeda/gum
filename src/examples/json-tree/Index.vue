@@ -3,7 +3,7 @@
     <h1>JSONTree</h1>
     <json-tree
       :data="data"
-      :schema="schema"
+      :parser="parser"
     ></json-tree>
   </div>
 </template>
@@ -12,6 +12,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import result from "./data";
 import GumTree from "@/components/Tree/Index.vue";
+import mysqlParser from "@/components/JSONTree/parser/mysql";
 
 @Component({
   components: {
@@ -22,6 +23,10 @@ export default class App extends Vue {
   mounted() {}
   private data: any[] = result.results;
   private schema: any[] = result.fields;
+
+  parser(key: string) {
+    return mysqlParser(key, this.schema);
+  }
 }
 </script>
 

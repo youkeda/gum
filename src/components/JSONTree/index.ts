@@ -4,6 +4,7 @@ import ArrayType from './components/ArrayType.vue';
 import StringType from './components/StringType.vue';
 import NumberType from './components/NumberType.vue';
 import ObjectType from './components/ObjectType.vue';
+import DateType from './components/DateType.vue';
 import BooleanType from './components/BooleanType.vue';
 import Wrapper from './components/Wrapper.vue';
 
@@ -17,6 +18,7 @@ let installed = false;
   vue.component('jt-number', NumberType);
   vue.component('jt-boolean', BooleanType);
   vue.component('jt-object', ObjectType);
+  vue.component('jt-date', DateType);
   vue.component('jt-wrapper', Wrapper);
 };
 

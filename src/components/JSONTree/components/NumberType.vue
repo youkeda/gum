@@ -1,7 +1,7 @@
 <template>
   <div class="jt-type">
     <jt-wrapper
-      :value="value"
+      :type="type"
       :depth="depth"
     >
       <div
@@ -28,7 +28,12 @@ import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 export default class JSNumberType extends Vue {
   @Prop({ default: 0 }) value!: number;
   @Prop({ default: "" }) yKey!: string;
+  @Prop({ default: "Number" }) innerType!: string;
   @Prop({ default: 0 }) depth!: number;
+
+  get type() {
+    return this.innerType || "Number";
+  }
 }
 </script>
 <style lang="scss" scoped>

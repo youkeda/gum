@@ -1,7 +1,7 @@
 <template>
   <div class="jt-type">
     <jt-wrapper
-      :value="value"
+      type="Array"
       :depth="depth"
     >
       <div
@@ -24,19 +24,23 @@
     </jt-wrapper>
     <template v-if="localOpen">
       <component
-        v-for="(cValue, index) in value"
-        :is="whichType(cValue)"
+        v-for="(match, index) in matchs"
+        :is="match.type"
+        :innerType="match.innerType"
         :key="`${depth}-${yKey}-${index}`"
-        :yKey="`${index}`"
-        :value="cValue"
+        :yKey="match.key"
+        :value="match.value"
         :depth="depth + 1"
       ></component>
     </template>
   </div>
 </template>
 <script lang="ts">
-import { Component, Vue, Watch, Prop } from "vue-property-decorator";
+import { Component, Vue, Watch, Prop, Inject } from "vue-property-decorator";
 import which from "./whichType";
+import Field from "../model/field";
+import { ParserFunc } from "../parser";
+import Match from "../model/match";
 
 @Component({
   components: {}
@@ -45,21 +49,37 @@ export default class JTArrayType extends Vue {
   @Prop({ default: () => [] }) value!: any[];
   @Prop({ default: "" }) yKey!: string;
   @Prop({ default: 0 }) depth!: number;
+  @Inject("jtParser") jtParser!: ParserFunc;
 
   private localOpen: boolean = false;
-
-  mounted() {}
+  private matchs: Match[] = [];
 
   get yValue() {
     return `Array[${this.value.length}]`;
   }
 
-  whichType(value: any) {
-    return which(value);
-  }
-
   expand() {
     this.localOpen = !this.localOpen;
+  }
+
+  mounted() {
+    this.initMatch();
+  }
+
+  @Watch("data")
+  onDataChange() {
+    this.initMatch();
+  }
+
+  initMatch() {
+    this.matchs = [];
+    this.value.map((item, index) => {
+      this.matchs.push({
+        ...which(undefined, item, this.jtParser),
+        key: index,
+        value: item
+      });
+    });
   }
 }
 </script>
