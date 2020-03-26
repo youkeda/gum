@@ -4,10 +4,16 @@
       :value="value"
       :depth="depth"
     >
-      <div slot="key">
+      <div
+        slot="key"
+        class="jt-key jt-key-boolean"
+      >
         {{ yKey }}
       </div>
-      <div slot="value">
+      <div
+        slot="value"
+        class="jt-value jt-value-object"
+      >
         {{ value }}
       </div>
     </jt-wrapper>

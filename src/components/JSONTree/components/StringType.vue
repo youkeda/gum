@@ -4,7 +4,10 @@
       :value="value"
       :depth="depth"
     >
-      <div slot="key">
+      <div
+        slot="key"
+        class="jt-key jt-key-string"
+      >
         {{ yKey }}
       </div>
 
@@ -12,13 +15,14 @@
         placement="bottom"
         :mouseEnterDelay="1"
         slot="value"
+        :arrowPointAtCenter="true"
         overlayClassName="tooltip"
       >
         <template slot="title">
-          <span>{{value}}</span>
+          <span class="jt-tooltip">{{formatValue}}</span>
         </template>
-        <div class="jt-value-string">
-          {{formatValue}}
+        <div class="jt-value jt-value-string">
+          {{value}}
         </div>
       </a-tooltip>
     </jt-wrapper>
@@ -43,7 +47,8 @@ export default class JTStringType extends Vue {
       (this.value.startsWith("{") && this.value.endsWith("}")) ||
       (this.value.startsWith("[") && this.value.endsWith("]"))
     ) {
-      let result = JSON.stringify(JSON.parse(this.value), null, 2);
+      let result = JSON.stringify(JSON.parse(this.value), null, 4);
+      console.log(result);
       return result;
     }
     return this.value;
@@ -52,6 +57,7 @@ export default class JTStringType extends Vue {
 </script>
 <style lang="scss">
 .tooltip {
+  max-width: 500px;
   .ant-tooltip-arrow {
     border-bottom-color: #464a5f;
   }
@@ -74,5 +80,9 @@ export default class JTStringType extends Vue {
   text-overflow: ellipsis;
   display: block;
   white-space: nowrap;
+}
+
+.jt-tooltip {
+  white-space: pre-wrap;
 }
 </style>

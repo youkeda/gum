@@ -11,11 +11,15 @@
         @click="expand"
       >
         <span
-          class="jt-expand-icon"
+          class="jt-expand-icon "
           :class="{'isExapnd': localOpen}"
-        ></span> {{ keyTxt }}
+        ></span>
+        <div class="jt-key jt-key-object">{{ keyTxt }}</div>
       </div>
-      <div slot="value">
+      <div
+        slot="value"
+        class="jt-value jt-value-object"
+      >
         {{ yValue }}
       </div>
     </jt-wrapper>

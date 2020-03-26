@@ -53,6 +53,25 @@
       transform: rotate(90deg);
     }
   }
+
+  @each $var in ('number', 'object', 'string', 'boolean', 'array') {
+    .jt-key-#{$var} {
+      display: flex;
+      align-items: center;
+
+      &:before {
+        display: block;
+        content: '';
+        background-image: url(//qgt-style.oss-cn-hangzhou.aliyuncs.com/img/gum/jsonTree/#{$var}.png);
+        background-size: 100%;
+        width: 14px;
+        height: 11px;
+        background-repeat: no-repeat;
+        margin-right: 5px;
+        margin-left: 5px;
+      }
+    }
+  }
 }
 
 .jt-sep {
