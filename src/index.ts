@@ -21,6 +21,7 @@ export default {
   install,
   Editor,
   JSConsole,
+  JSONTree,
   YKDModal,
   YKDCenterDrawer,
   YKDRightDrawer
