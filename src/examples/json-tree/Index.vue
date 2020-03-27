@@ -1,7 +1,9 @@
 <template>
   <div>
     <h1>JSONTree</h1>
-    <json-tree :data="data"></json-tree>
+    <div class="example">
+      <json-tree :data="data"></json-tree>
+    </div>
   </div>
 </template>
 
@@ -27,4 +29,8 @@ export default class App extends Vue {
 }
 </script>
 
-<style></style>
+<style lang="scss">
+.example {
+  height: 500px;
+}
+</style>

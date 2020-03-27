@@ -13,7 +13,6 @@
     padding: 0 25px;
     height: 100%;
     line-height: 26px;
-    width: 33.33%;
     text-align: left;
     border-left: 1px dashed #434554;
     box-sizing: border-box;
@@ -23,6 +22,12 @@
   .key {
     border-left: none;
   }
+}
+.jt-key {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  white-space: nowrap;
 }
 
 .jt-type {
@@ -38,6 +43,7 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+    width: 100%;
 
     .jt-expand-icon {
       display: block;
@@ -47,6 +53,7 @@
       background-size: 100%;
       margin-right: 5px;
       transition: transform 100ms ease-in-out;
+      flex-shrink: 0;
     }
 
     .isExapnd {
@@ -62,6 +69,7 @@
       align-items: center;
 
       &:before {
+        flex-shrink: 0;
         display: block;
         content: '';
         background-image: url(//qgt-style.oss-cn-hangzhou.aliyuncs.com/img/gum/jsonTree/#{$var}.png);
