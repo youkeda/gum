@@ -1,18 +1,15 @@
 <template>
   <div>
     <h1>JSONTree</h1>
-    <json-tree
-      :data="data"
-      :parser="parser"
-    ></json-tree>
+    <json-tree :data="data" :parser="parser"></json-tree>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import result from "./data";
-import GumTree from "@/components/Tree/Index.vue";
-import mysqlParser from "@/components/JSONTree/parser/mysql";
+import { Component, Vue } from 'vue-property-decorator';
+import result from './data';
+import GumTree from '@/components/Tree/Index.vue';
+import mysqlParser from '@/components/JSONTree/parser/mysql';
 
 @Component({
   components: {
