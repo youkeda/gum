@@ -21,17 +21,17 @@
   </div>
 </template>
 <script lang="ts">
-import { Component, Vue, Watch, Prop, Provide } from "vue-property-decorator";
-import which from "./components/whichType";
-import { ParserFunc } from "./parser";
-import Match from "./model/match";
+import { Component, Vue, Watch, Prop, Provide } from 'vue-property-decorator';
+import which from './components/whichType';
+import { ParserFunc } from './parser';
+import Match from './model/match';
 @Component({
   components: {}
 })
 export default class JSONTree extends Vue {
   @Prop({ default: () => [] }) data!: any[];
-  @Prop({ default: () => () => {} }) parser!: ParserFunc;
-  @Provide("jtParser") jtParser: ParserFunc = this.parser;
+  @Prop({ default: () => undefined }) parser?: ParserFunc;
+  @Provide('jtParser') jtParser?: ParserFunc = this.parser;
 
   private matchs: Match[] = [];
 
@@ -39,7 +39,7 @@ export default class JSONTree extends Vue {
     this.initMatch();
   }
 
-  @Watch("data")
+  @Watch('data')
   onDataChange() {
     this.initMatch();
   }
@@ -57,7 +57,7 @@ export default class JSONTree extends Vue {
 }
 </script>
 
-<style lang="scss" >
+<style lang="scss">
 .json-tree {
   .line {
     .header-value,
@@ -66,7 +66,7 @@ export default class JSONTree extends Vue {
       border-left: 1px dashed #3d3f4f !important;
 
       &:before {
-        content: "";
+        content: '';
         position: absolute;
         left: 0;
         width: 2px;

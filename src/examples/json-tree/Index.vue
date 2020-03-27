@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>JSONTree</h1>
-    <json-tree :data="data" :parser="parser"></json-tree>
+    <json-tree :data="data"></json-tree>
   </div>
 </template>
 
