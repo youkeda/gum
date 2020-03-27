@@ -13,6 +13,7 @@ export default function witch(
   value: any,
   parser?: ParserFunc
 ): Match {
+  // 优先自定义parser
   if (parser) {
     return parser(key);
   }
