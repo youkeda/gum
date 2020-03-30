@@ -34,7 +34,7 @@ export default class JCTypeWrapper extends Vue {
 
   @Watch('jtWidth')
   onJtWidthChange() {
-    console.log('--------', this.jtWidth);
+    // console.log('--------', this.jtWidth);
   }
 
   get valueStyle() {
