@@ -15,6 +15,11 @@ export default new Router({
       path: '/json-tree',
       component: () =>
         import(/* webpackChunkName: "home" */ '@/examples/json-tree/Index.vue')
+    },
+    {
+      path: '/rich-text',
+      component: () =>
+        import(/* webpackChunkName: "home" */ '@/examples/rich-text/Index.vue')
     }
   ]
 });

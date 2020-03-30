@@ -1,0 +1,64 @@
+$color-black: #000000;
+$color-white: #ffffff;
+$color-grey: #dddddd;
+
+.menububble {
+  position: absolute;
+  display: flex;
+  z-index: 20;
+  background: $color-black;
+  border-radius: 5px;
+  padding: 0.3rem;
+  margin-bottom: 0.5rem;
+  transform: translateX(-50%);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s, visibility 0.2s;
+
+  &.is-active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__button {
+    display: inline-flex;
+    background: transparent;
+    border: 0;
+    color: $color-white;
+    padding: 0.2rem 0.5rem;
+    margin-right: 0.2rem;
+    border-radius: 3px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &:hover {
+      background-color: rgba($color-white, 0.1);
+    }
+
+    &.is-active {
+      background-color: rgba($color-white, 0.2);
+    }
+
+    .iconlink {
+      margin-left: 10px;
+    }
+  }
+
+  &__form {
+    display: flex;
+    align-items: center;
+  }
+
+  &__input {
+    font: inherit;
+    border: none;
+    background: transparent;
+    color: $color-white;
+  }
+}
