@@ -1,0 +1,8 @@
+import { Vue } from "vue-property-decorator";
+export default class JSNumberType extends Vue {
+    value: number;
+    yKey: string;
+    innerType: string;
+    depth: number;
+    readonly type: string;
+}
