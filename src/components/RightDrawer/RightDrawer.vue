@@ -2,7 +2,7 @@
   <div class="right_drawer_container">
     <a-drawer
       :title="title"
-      width="500"
+      :width="width ? width : 500"
       placement="right"
       :closable="false"
       @close="onClose"
@@ -15,36 +15,30 @@
         <slot name="content"></slot>
       </div>
 
-      <slot
-        name="footer"
-        class="footer"
-      ></slot>
+      <slot name="footer" class="footer"></slot>
 
-      <div
-        class="cancel_img"
-        v-if="visible"
-        @click="onClose"
-      ></div>
+      <div class="cancel_img" v-if="visible" @click="onClose"></div>
     </a-drawer>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Watch, Vue } from "vue-property-decorator";
-import { Drawer } from "ant-design-vue";
+import { Component, Prop, Watch, Vue } from 'vue-property-decorator';
+import { Drawer } from 'ant-design-vue';
 
 @Component({
   components: {
-    "a-drawer": Drawer
+    'a-drawer': Drawer
   }
 })
 export default class RightDrawer extends Vue {
   @Prop() private visible?: boolean;
   @Prop() private title?: string;
   @Prop() private showImage?: string;
+  @Prop() private width?: string;
 
   onClose() {
-    this.$emit("close");
+    this.$emit('close');
   }
 }
 </script>
