@@ -15,5 +15,6 @@ declare const _default: {
     YKDModal: typeof YKDModal;
     YKDCenterDrawer: typeof YKDCenterDrawer;
     YKDRightDrawer: typeof YKDRightDrawer;
+    YKDRichText: typeof YKDRightDrawer;
 };
 export default _default;
