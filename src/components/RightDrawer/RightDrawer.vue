@@ -45,6 +45,7 @@ export default class RightDrawer extends Vue {
 
 <style lang="scss" scope>
 .ant-drawer-content {
+  overflow: visible;
   .ant-drawer-wrapper-body {
     display: flex;
     flex-direction: column;
