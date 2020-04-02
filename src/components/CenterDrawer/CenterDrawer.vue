@@ -20,7 +20,7 @@
     <div v-if="!isShow">
       <a-modal
         class="topic-number"
-        title="题目数量"
+        :title="title"
         :visible="localVisible"
         @cancel="handleCancel"
         :footer="null"
