@@ -5,7 +5,7 @@ import JSONTree from './components/JSONTree';
 import YKDModal from './components/Modal/index';
 import YKDCenterDrawer from './components/CenterDrawer/index';
 import YKDRightDrawer from './components/RightDrawer/index';
-import YKDRichText from './components/RightDrawer/index';
+import YKDRichText from './components/RichText/index';
 
 const install = function(opts = {}) {
   Vue.use(Editor);
@@ -14,9 +14,17 @@ const install = function(opts = {}) {
   Vue.use(<any>YKDCenterDrawer);
   Vue.use(<any>YKDRightDrawer);
   Vue.use(<any>JSONTree);
+  Vue.use(<any>YKDRichText);
 };
 
-export { Editor, JSConsole, YKDModal, YKDRightDrawer, YKDCenterDrawer };
+export {
+  Editor,
+  JSConsole,
+  YKDModal,
+  YKDRightDrawer,
+  YKDCenterDrawer,
+  YKDRichText
+};
 
 export default {
   install,
