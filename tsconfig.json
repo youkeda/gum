@@ -12,7 +12,7 @@
     "noImplicitThis": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
-    "noEmitOnError": true,
+    "noEmitOnError": false,
     "strictNullChecks": true,
     "preserveConstEnums": false,
     "removeComments": false,
