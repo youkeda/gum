@@ -1,6 +1,12 @@
 <template>
   <div>
+    <input type="text">
+    <div
+      v-for="i in 5"
+      :key="i"
+    >在computed中定义的nowdate变量，在bindPickerChange 中修改nowdate却不管用？</div>
     <RichText
+      ref="editor"
       :callback="getContent"
       :content="content"
       :fixMenu="fixMenu"
@@ -9,6 +15,7 @@
     >
       <!-- :handlePaste="uploadFile" -->
     </RichText>
+    <button @click="remove">remove</button>
   </div>
 </template>
 
@@ -21,8 +28,8 @@ import { File, UploadOption } from '@/components/RichText/components/model';
 
 @Component({
   components: {
-    RichText
-  }
+    RichText,
+  },
 })
 export default class App extends Vue {
   fixMenu: object = {
@@ -31,8 +38,8 @@ export default class App extends Vue {
       position: 'fixed',
       top: '50px',
       left: '50px',
-      right: '50px'
-    }
+      right: '50px',
+    },
   };
   content: string = `
 <h1>Most basic use</h1>
@@ -47,6 +54,10 @@ export default class App extends Vue {
 
   uploadFile(file: any, option: UploadOption) {
     uploadFile(file, option);
+  }
+
+  remove() {
+    (this.$refs.editor as any).removeContent();
   }
 }
 </script>

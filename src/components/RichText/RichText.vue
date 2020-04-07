@@ -506,6 +506,9 @@ export default {
     });
   },
   methods: {
+    removeContent() {
+      this.editor.setContent('');
+    },
     insertPaste({ url }) {
       const state = this.editor.state
       const { selection, schema } = state
