@@ -8,6 +8,9 @@
       @close="onClose"
       :visible="visible"
     >
+      <div class="drawer_title" slot="title">
+        <slot name="title"/>
+      </div>
       <div
         class="right_drawer_content"
         :class="{ hideImage: showImage !== 'true' }"
