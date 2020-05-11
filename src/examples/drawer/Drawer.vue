@@ -1,6 +1,6 @@
 <template>
   <div class="right_drawer_container">
-    <RightDrawer :visible="visible">
+    <RightDrawer :visible="visible" className="aaa">
       <div slot="title"><p>dfasdfasdf</p></div>
     </RightDrawer>
   </div>

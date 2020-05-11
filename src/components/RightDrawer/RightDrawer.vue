@@ -7,9 +7,10 @@
       :closable="false"
       @close="onClose"
       :visible="visible"
+      :wrapClassName="className"
     >
       <div class="drawer_title" slot="title">
-        <slot name="title"/>
+        <slot name="title" />
       </div>
       <div
         class="right_drawer_content"
@@ -39,6 +40,7 @@ export default class RightDrawer extends Vue {
   @Prop() private title?: string;
   @Prop() private showImage?: string;
   @Prop() private width?: string;
+  @Prop() private className?: string;
 
   onClose() {
     this.$emit('close');
