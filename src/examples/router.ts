@@ -20,6 +20,11 @@ export default new Router({
       path: '/rich-text',
       component: () =>
         import(/* webpackChunkName: "home" */ '@/examples/rich-text/Index.vue')
+    },
+    {
+      path: '/demo',
+      component: () =>
+        import(/* webpackChunkName: "home" */ '@/examples/drawer/Drawer.vue')
     }
   ]
 });
