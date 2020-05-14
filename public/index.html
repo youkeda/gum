@@ -1,33 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+    <title>gum1</title>
 
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
-  <link
-    rel="stylesheet"
-    href="//at.alicdn.com/t/font_1300658_272qze73awd.css"
-  />
-  <title>gum1</title>
-
-  <script src="/monaco-editor/min/vs/loader.js"></script>
-  <script>require.config({ paths: { 'vs': '/monaco-editor/min/vs' } });</script>
-  <!-- 
+    <script src="/monaco-editor/min/vs/loader.js"></script>
+    <script>
+      require.config({ paths: { vs: '/monaco-editor/min/vs' } });
+    </script>
+    <!-- 
   <script src="/monaco-editor/min/vs/editor/editor.main.nls.js"></script>
   <script src="/monaco-editor/min/vs/editor/editor.main.js"></script> -->
+  </head>
 
-</head>
+  <body>
+    <noscript>
+      <strong
+        >We're sorry but gum1 doesn't work properly without JavaScript enabled.
+        Please enable it to continue.</strong
+      >
+    </noscript>
+    <div id="app"></div>
 
-<body>
-  <noscript>
-    <strong>We're sorry but gum1 doesn't work properly without JavaScript enabled.
-      Please enable it to continue.</strong>
-  </noscript>
-  <div id="app"></div>
-
-  <!-- built files will be auto injected -->
-</body>
-
+    <!-- built files will be auto injected -->
+  </body>
 </html>
