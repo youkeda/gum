@@ -193,7 +193,7 @@
             <template slot="title">
               <span>超链接</span>
             </template>
-            <i class="iconfont iconlink2" />
+            <i class="iconfont iconlink" />
           </a-tooltip>
         </button>
 

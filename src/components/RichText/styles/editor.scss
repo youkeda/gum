@@ -194,3 +194,23 @@
     }
   }
 }
+$imgPre: 'https://style.youkeda.com/img/gum/richText';
+$iconList: 'bold', 'Italic', 'strikethrough', 'underline', 'code', 'paragraph',
+  'ul', 'ol', 'quote', 'codesquareo', 'link', 'hr', 'undo', 'redo', 'pic',
+  'expression';
+.iconfont {
+  width: 18px;
+  height: 18px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  @each $icon in $iconList {
+    &.icon#{$icon} {
+      background-image: url(#{$imgPre}/#{$icon}.png);
+    }
+  }
+}
+.iconfont.iconpic {
+  display: inline-block;
+  vertical-align: text-bottom;
+}

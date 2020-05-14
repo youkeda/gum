@@ -4,6 +4,11 @@
 
 - [ ] 基础引用
 
+## todo
+
+- [ ] 指定输出字符串类型，html、json、md，默认为 html；
+- [ ] 修改滚动事件，abs；
+
 ## 参数
 
 - callback(content)
