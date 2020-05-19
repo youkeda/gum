@@ -4,5 +4,6 @@ export default class RightDrawer extends Vue {
     private title?;
     private showImage?;
     private width?;
+    private className?;
     onClose(): void;
 }

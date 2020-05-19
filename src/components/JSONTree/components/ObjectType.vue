@@ -81,7 +81,6 @@ export default class JCObjectType extends Vue {
         value: this.value[key],
       });
     });
-    console.log(this.matchs);
   }
 }
 </script>
