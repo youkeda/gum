@@ -1,11 +1,7 @@
 <template>
   <div class="jt-type">
     <jt-wrapper :type="type" :depth="depth">
-      <div
-        slot="key"
-        class="jt-key jt-key-string"
-        :class="{ 'jt-key-key': isKey }"
-      >
+      <div slot="key" class="jt-key" :class="bsonClass">
         {{ yKey }}
       </div>
 
@@ -43,6 +39,12 @@ export default class JTBsonType extends Vue {
 
   get isKey() {
     return this.yKey === 'id' || this.yKey === '_id';
+  }
+
+  get bsonClass() {
+    let classs: any = { 'jt-key-key': this.isKey };
+    classs[`jt-key-${this.type.toLowerCase()}`] = true;
+    return classs;
   }
 
   mounted() {}

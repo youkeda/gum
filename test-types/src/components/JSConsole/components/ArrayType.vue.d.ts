@@ -6,6 +6,6 @@ export default class IDEA extends Vue {
     open: boolean;
     private localOpen;
     mounted(): void;
-    whichType(value: any): "jc-array" | "jc-string" | "jc-null" | "jc-undefined" | "jc-number" | "jc-function" | "jc-boolean" | "jc-object" | "jc-error" | "jc-promise" | "jc-wrapper" | "jc-set";
+    whichType(value: any): "jc-string" | "jc-number" | "jc-boolean" | "jc-set" | "jc-promise" | "jc-error" | "jc-undefined" | "jc-null" | "jc-array" | "jc-function" | "jc-wrapper" | "jc-object";
     toggle(e: any): void;
 }

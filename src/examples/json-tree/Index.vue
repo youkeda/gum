@@ -20,7 +20,9 @@ import { EJSON } from 'bson';
 })
 export default class App extends Vue {
   // private data: any[] = EJSON.parse(JSON.stringify(result.results));
-  private data: any = EJSON.parse(EJSON.stringify(result.results));
+  private data: any = EJSON.parse(EJSON.stringify(result.results), {
+    relaxed: false,
+  });
   private schema: any[] = result.fields;
 
   mounted() {

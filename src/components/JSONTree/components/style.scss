@@ -65,7 +65,18 @@
   }
 
   @each $var
-    in ('number', 'object', 'string', 'boolean', 'date', 'array', 'key')
+    in (
+      'number',
+      'object',
+      'string',
+      'boolean',
+      'date',
+      'array',
+      'key',
+      'int32',
+      'int64',
+      'double'
+    )
   {
     .jt-key-#{$var} {
       display: flex;
