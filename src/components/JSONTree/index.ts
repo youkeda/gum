@@ -6,6 +6,7 @@ import NumberType from './components/NumberType.vue';
 import ObjectType from './components/ObjectType.vue';
 import DateType from './components/DateType.vue';
 import BooleanType from './components/BooleanType.vue';
+import BsonType from './components/BsonType.vue';
 import Wrapper from './components/Wrapper.vue';
 
 let installed = false;
@@ -19,6 +20,7 @@ let installed = false;
   vue.component('jt-boolean', BooleanType);
   vue.component('jt-object', ObjectType);
   vue.component('jt-date', DateType);
+  vue.component('jt-bson', BsonType);
   vue.component('jt-wrapper', Wrapper);
 };
 

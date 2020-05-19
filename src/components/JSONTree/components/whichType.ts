@@ -6,8 +6,21 @@ const COMPONENT_MAP: any = {
   '[object Boolean]': 'jt-boolean',
   '[object String]': 'jt-string',
   '[object Array]': 'jt-array',
-  '[object Number]': 'jt-number'
+  '[object Number]': 'jt-number',
 };
+
+const MONGODB_CONSTRUCT_NAMES: any = [
+  'Int32',
+  'ObjectId',
+  'Double',
+  'String',
+  'Undefined',
+  'Boolean',
+  'Date',
+  'Null',
+  'Symbol',
+  'Int64',
+];
 export default function witch(
   key: any,
   value: any,
@@ -24,7 +37,16 @@ export default function witch(
   } catch (e) {
     type = '[object Object]';
   }
+
+  // 此处hook一个mongodb的处理逻辑
+  if (type === '[object Object]') {
+    if (MONGODB_CONSTRUCT_NAMES.indexOf(value.constructor.name) !== -1) {
+      return {
+        type: 'jt-bson',
+      };
+    }
+  }
   return {
-    type: COMPONENT_MAP[type]
+    type: COMPONENT_MAP[type],
   };
 }

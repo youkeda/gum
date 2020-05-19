@@ -31,7 +31,7 @@ import Match from '../model/match';
 
 const LIMIT_CLOSED = 5;
 @Component({
-  components: {}
+  components: {},
 })
 export default class JCObjectType extends Vue {
   @Prop({ default: () => {} }) value!: any;
@@ -78,9 +78,10 @@ export default class JCObjectType extends Vue {
       this.matchs.push({
         ...which(key, this.value[key], this.jtParser),
         key: key,
-        value: this.value[key]
+        value: this.value[key],
       });
     });
+    console.log(this.matchs);
   }
 }
 </script>

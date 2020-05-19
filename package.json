@@ -15,8 +15,10 @@
     "build": "vue-cli-service build --target lib --dest lib --name gum ./src/index.ts"
   },
   "dependencies": {
+    "@types/bson": "^4.0.2",
     "@types/highlight.js": "^9.12.3",
     "ant-design-vue": "^1.4.12",
+    "bson": "^4.0.4",
     "bulma": "^0.8.0",
     "core-js": "^3.6.4",
     "highlight": "^0.2.4",
