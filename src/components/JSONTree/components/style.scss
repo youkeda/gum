@@ -40,12 +40,15 @@
   }
 
   .jt-expand {
+    position: relative;
     display: flex;
     align-items: center;
     cursor: pointer;
     width: 100%;
 
     .jt-expand-icon {
+      position: absolute;
+      left: -10px;
       display: block;
       background-image: url(//qgt-style.oss-cn-hangzhou.aliyuncs.com/img/gum/jsonTree/arrow.png);
       width: 6px;
