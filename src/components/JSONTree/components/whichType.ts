@@ -20,6 +20,7 @@ const MONGODB_CONSTRUCT_NAMES: any = [
   'Null',
   'Symbol',
   'Int64',
+  'Long',
 ];
 export default function witch(
   key: any,

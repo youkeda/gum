@@ -75,7 +75,9 @@
       'key',
       'int32',
       'int64',
-      'double'
+      'double',
+      'objectid',
+      'long'
     )
   {
     .jt-key-#{$var} {
