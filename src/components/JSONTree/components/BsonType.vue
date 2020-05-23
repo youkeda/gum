@@ -1,7 +1,14 @@
 <template>
   <div class="jt-type">
-    <jt-wrapper :type="type" :depth="depth">
-      <div slot="key" class="jt-key" :class="bsonClass">
+    <jt-wrapper
+      :type="type"
+      :depth="depth"
+    >
+      <div
+        slot="key"
+        class="jt-key"
+        :class="bsonClass"
+      >
         {{ yKey }}
       </div>
 
@@ -23,26 +30,26 @@
   </div>
 </template>
 <script lang="ts">
-import { Component, Vue, Watch, Prop } from 'vue-property-decorator';
-import { Tooltip } from 'ant-design-vue';
+import { Component, Vue, Watch, Prop } from "vue-property-decorator";
+import { Tooltip } from "ant-design-vue";
 
 @Component({
   components: {
-    'a-tooltip': Tooltip,
-  },
+    "a-tooltip": Tooltip
+  }
 })
 export default class JTBsonType extends Vue {
-  @Prop({ default: '' }) value!: string;
-  @Prop({ default: '' }) innerType!: string;
-  @Prop({ default: '' }) yKey!: string;
+  @Prop({ default: "" }) value!: string;
+  @Prop({ default: "" }) innerType!: string;
+  @Prop({ default: "" }) yKey!: string;
   @Prop({ default: 0 }) depth!: number;
 
   get isKey() {
-    return this.yKey === 'id' || this.yKey === '_id';
+    return this.yKey === "id" || this.yKey === "_id";
   }
 
   get bsonClass() {
-    let classs: any = { 'jt-key-key': this.isKey };
+    let classs: any = { "jt-key-key": this.isKey };
     classs[`jt-key-${this.type.toLowerCase()}`] = true;
     return classs;
   }
@@ -53,7 +60,17 @@ export default class JTBsonType extends Vue {
     return this.value;
   }
   get type() {
-    return this.value.constructor.name || 'String';
+    let type = this.value.constructor.name || "String";
+    if (type === "String") {
+      console.log(
+        "-----",
+        this.value.match(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z/)
+      );
+      if (this.value.match(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z/)) {
+        type = "Date";
+      }
+    }
+    return type;
   }
 }
 </script>
@@ -75,7 +92,7 @@ export default class JTBsonType extends Vue {
 }
 </style>
 <style lang="scss" scoped>
-@import './style.scss';
+@import "./style.scss";
 
 .jt-value-string {
   overflow: hidden;

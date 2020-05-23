@@ -62,7 +62,13 @@ export default class JTStringType extends Vue {
   }
 
   get type() {
-    return this.innerType || "String";
+    let type = this.innerType || "String";
+    if (type === "String") {
+      if (this.value.match(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z/)) {
+        type = "Date";
+      }
+    }
+    return type;
   }
 }
 </script>
