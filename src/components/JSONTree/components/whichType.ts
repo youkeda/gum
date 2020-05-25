@@ -41,7 +41,6 @@ export default function witch(
 
   // 此处hook一个mongodb的处理逻辑
   if (type === '[object Object]') {
-    console.log(key, value);
     if (MONGODB_CONSTRUCT_NAMES.indexOf(value.constructor.name) !== -1) {
       return {
         type: 'jt-bson',

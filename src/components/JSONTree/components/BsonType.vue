@@ -62,10 +62,6 @@ export default class JTBsonType extends Vue {
   get type() {
     let type = this.value.constructor.name || "String";
     if (type === "String") {
-      console.log(
-        "-----",
-        this.value.match(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z/)
-      );
       if (this.value.match(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z/)) {
         type = "Date";
       }

@@ -23,7 +23,7 @@
           <span class="jt-tooltip">{{formatValue}}</span>
         </template>
         <div class="jt-value jt-value-string">
-          {{value}}
+          {{emptyValue}}
         </div>
       </a-tooltip>
     </jt-wrapper>
@@ -46,6 +46,10 @@ export default class JTStringType extends Vue {
 
   get isKey() {
     return this.yKey === "id" || this.yKey === "_id";
+  }
+
+  get emptyValue() {
+    return this.value.replace(/[\n\t\r]/g, " ");
   }
 
   get formatValue() {
@@ -96,7 +100,7 @@ export default class JTStringType extends Vue {
   overflow: hidden;
   text-overflow: ellipsis;
   display: block;
-  white-space: nowrap;
+  white-space: pre;
 }
 
 .jt-tooltip {
