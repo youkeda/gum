@@ -11,7 +11,7 @@
       <div slot="value"><i @mousedown="onHeaderDrag"></i>value</div>
       <div slot="type">type</div>
     </jt-wrapper>
-    <div class="json-tree-content">
+    <div class="json-tree-content" v-if="matchs && matchs.length > 0">
       <component
         v-for="(match, index) in matchs"
         :key="`line-${index}`"
@@ -21,29 +21,29 @@
         :depth="0"
       ></component>
     </div>
-    <div class="empty">
+    <div class="empty" v-else>
       No Data
     </div>
   </div>
 </template>
 <script lang="ts">
-import { Component, Vue, Watch, Prop, Provide } from "vue-property-decorator";
-import which from "./components/whichType";
-import { ParserFunc } from "./parser";
-import Match from "./model/match";
+import { Component, Vue, Watch, Prop, Provide } from 'vue-property-decorator';
+import which from './components/whichType';
+import { ParserFunc } from './parser';
+import Match from './model/match';
 const DEFAULT_KEY_WIDTH = 300;
 @Component({
-  components: {}
+  components: {},
 })
 export default class JSONTree extends Vue {
   @Prop({ default: () => [] }) data!: any[];
   @Prop({ default: () => undefined }) parser?: ParserFunc;
-  @Provide("jtParser") jtParser?: ParserFunc = this.parser;
+  @Provide('jtParser') jtParser?: ParserFunc = this.parser;
 
   private oWidth: any = {
-    key: DEFAULT_KEY_WIDTH
+    key: DEFAULT_KEY_WIDTH,
   };
-  @Provide("jtWidth") jtWidth: any = this.oWidth;
+  @Provide('jtWidth') jtWidth: any = this.oWidth;
 
   private matchs: Match[] = [];
   private isDragHeader = false;
@@ -51,7 +51,7 @@ export default class JSONTree extends Vue {
     this.initMatch();
   }
 
-  @Watch("data")
+  @Watch('data')
   onDataChange() {
     this.initMatch();
   }
@@ -62,7 +62,7 @@ export default class JSONTree extends Vue {
       this.matchs.push({
         ...which(undefined, item, this.jtParser),
         key: index,
-        value: item
+        value: item,
       });
     });
 

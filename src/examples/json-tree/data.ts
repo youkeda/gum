@@ -1,9 +1,5 @@
 export default {
-  results: [
-    {
-      hero_name: '    鲁班七号\ndddd',
-    },
-  ],
+  results: [],
   fields: [
     {
       catalog: 'def',

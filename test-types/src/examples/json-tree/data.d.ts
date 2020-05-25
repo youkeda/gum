@@ -1,7 +1,5 @@
 declare const _default: {
-    results: {
-        hero_name: string;
-    }[];
+    results: never[];
     fields: {
         catalog: string;
         db: string;
