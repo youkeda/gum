@@ -1,5 +1,7 @@
 declare const _default: {
-    results: never[];
+    results: {
+        test: string;
+    }[];
     fields: {
         catalog: string;
         db: string;

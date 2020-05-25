@@ -88,13 +88,14 @@
         flex-shrink: 0;
         display: block;
         content: '';
-        background-image: url(//qgt-style.oss-cn-hangzhou.aliyuncs.com/img/gum/jsonTree/#{$var}.png);
+        background-image: url(//qgt-style.oss-cn-hangzhou.aliyuncs.com/img/gum/jsonTree/#{$var}.svg);
         background-size: 100%;
         width: 14px;
         height: 12px;
         background-repeat: no-repeat;
         margin-right: 5px;
         margin-left: 5px;
+        margin-top: 2px;
       }
     }
   }

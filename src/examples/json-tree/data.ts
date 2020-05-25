@@ -1,5 +1,9 @@
 export default {
-  results: [],
+  results: [
+    {
+      test: 'test',
+    },
+  ],
   fields: [
     {
       catalog: 'def',
