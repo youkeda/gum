@@ -1,13 +1,10 @@
 <template>
   <div class="jt-type">
-    <jt-wrapper
-      :type="type"
-      :depth="depth"
-    >
+    <jt-wrapper :type="type" :depth="depth">
       <div
         slot="key"
         class="jt-key jt-key-string"
-        :class="{'jt-key-key': isKey}"
+        :class="{ 'jt-key-key': isKey }"
       >
         {{ rKey }}
       </div>
@@ -20,29 +17,27 @@
         overlayClassName="tooltip"
       >
         <template slot="title">
-          <span class="jt-tooltip">{{formatValue}}</span>
+          <span class="jt-tooltip">{{ formatValue }}</span>
         </template>
-        <div class="jt-value jt-value-string">
-          {{emptyValue}}
-        </div>
+        <div class="jt-value jt-value-string">{{ emptyValue }}</div>
       </a-tooltip>
     </jt-wrapper>
   </div>
 </template>
 <script lang="ts">
-import { Component, Vue, Watch, Prop } from "vue-property-decorator";
-import { Tooltip } from "ant-design-vue";
-import { removeKeywork } from "../utils/handleKeyword";
+import { Component, Vue, Watch, Prop } from 'vue-property-decorator';
+import { Tooltip } from 'ant-design-vue';
+import { removeKeywork } from '../utils/handleKeyword';
 
 @Component({
   components: {
-    "a-tooltip": Tooltip
-  }
+    'a-tooltip': Tooltip,
+  },
 })
 export default class JTStringType extends Vue {
-  @Prop({ default: "" }) value!: string;
-  @Prop({ default: "" }) innerType!: string;
-  @Prop({ default: "" }) yKey!: string;
+  @Prop({ default: '' }) value!: string;
+  @Prop({ default: '' }) innerType!: string;
+  @Prop({ default: '' }) yKey!: string;
   @Prop({ default: 0 }) depth!: number;
 
   get rKey() {
@@ -50,23 +45,23 @@ export default class JTStringType extends Vue {
   }
 
   get isKey() {
-    return this.yKey === "id" || this.yKey === "_id";
+    return this.yKey === 'id' || this.yKey === '_id';
   }
 
   get emptyValue() {
-    return this.value.replace(/[\n\t\r]/g, " ");
+    return this.value.replace(/[\n\t\r]/g, ' ');
   }
 
   get formatValue() {
     if (!this.value) {
       if (this.value === null) {
-        return "NULL";
+        return 'NULL';
       }
-      return "";
+      return '';
     }
     if (
-      (this.value.startsWith("{") && this.value.endsWith("}")) ||
-      (this.value.startsWith("[") && this.value.endsWith("]"))
+      (this.value.startsWith('{') && this.value.endsWith('}')) ||
+      (this.value.startsWith('[') && this.value.endsWith(']'))
     ) {
       return JSON.stringify(JSON.parse(this.value), null, 4);
     }
@@ -74,10 +69,10 @@ export default class JTStringType extends Vue {
   }
 
   get type() {
-    let type = this.innerType || "String";
-    if (type === "String") {
+    let type = this.innerType || 'String';
+    if (type === 'String') {
       if (this.value.match(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z/)) {
-        type = "Date";
+        type = 'Date';
       }
     }
     return type;
@@ -102,7 +97,7 @@ export default class JTStringType extends Vue {
 }
 </style>
 <style lang="scss" scoped>
-@import "./style.scss";
+@import './style.scss';
 
 .jt-value-string {
   overflow: hidden;

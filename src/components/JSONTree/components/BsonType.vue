@@ -1,14 +1,7 @@
 <template>
   <div class="jt-type">
-    <jt-wrapper
-      :type="type"
-      :depth="depth"
-    >
-      <div
-        slot="key"
-        class="jt-key"
-        :class="bsonClass"
-      >
+    <jt-wrapper :type="type" :depth="depth">
+      <div slot="key" class="jt-key" :class="bsonClass">
         {{ rKey }}
       </div>
 
@@ -22,27 +15,25 @@
         <template slot="title">
           <span class="jt-tooltip">{{ formatValue }}</span>
         </template>
-        <div class="jt-value jt-value-string">
-          {{ value }}
-        </div>
+        <div class="jt-value jt-value-string">{{ value }}</div>
       </a-tooltip>
     </jt-wrapper>
   </div>
 </template>
 <script lang="ts">
-import { Component, Vue, Watch, Prop } from "vue-property-decorator";
-import { Tooltip } from "ant-design-vue";
-import { removeKeywork } from "../utils/handleKeyword";
+import { Component, Vue, Watch, Prop } from 'vue-property-decorator';
+import { Tooltip } from 'ant-design-vue';
+import { removeKeywork } from '../utils/handleKeyword';
 
 @Component({
   components: {
-    "a-tooltip": Tooltip
-  }
+    'a-tooltip': Tooltip,
+  },
 })
 export default class JTBsonType extends Vue {
-  @Prop({ default: "" }) value!: string;
-  @Prop({ default: "" }) innerType!: string;
-  @Prop({ default: "" }) yKey!: string;
+  @Prop({ default: '' }) value!: string;
+  @Prop({ default: '' }) innerType!: string;
+  @Prop({ default: '' }) yKey!: string;
   @Prop({ default: 0 }) depth!: number;
 
   get rKey() {
@@ -50,11 +41,11 @@ export default class JTBsonType extends Vue {
   }
 
   get isKey() {
-    return this.yKey === "id" || this.yKey === "_id";
+    return this.yKey === 'id' || this.yKey === '_id';
   }
 
   get bsonClass() {
-    let classs: any = { "jt-key-key": this.isKey };
+    let classs: any = { 'jt-key-key': this.isKey };
     classs[`jt-key-${this.type.toLowerCase()}`] = true;
     return classs;
   }
@@ -65,10 +56,10 @@ export default class JTBsonType extends Vue {
     return this.value;
   }
   get type() {
-    let type = this.value.constructor.name || "String";
-    if (type === "String") {
+    let type = this.value.constructor.name || 'String';
+    if (type === 'String') {
       if (this.value.match(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z/)) {
-        type = "Date";
+        type = 'Date';
       }
     }
     return type;
@@ -93,7 +84,7 @@ export default class JTBsonType extends Vue {
 }
 </style>
 <style lang="scss" scoped>
-@import "./style.scss";
+@import './style.scss';
 
 .jt-value-string {
   overflow: hidden;
