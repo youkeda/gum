@@ -9,7 +9,7 @@
         class="jt-key"
         :class="bsonClass"
       >
-        {{ yKey }}
+        {{ rKey }}
       </div>
 
       <a-tooltip
@@ -32,6 +32,7 @@
 <script lang="ts">
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 import { Tooltip } from "ant-design-vue";
+import { removeKeywork } from "../utils/handleKeyword";
 
 @Component({
   components: {
@@ -43,6 +44,10 @@ export default class JTBsonType extends Vue {
   @Prop({ default: "" }) innerType!: string;
   @Prop({ default: "" }) yKey!: string;
   @Prop({ default: 0 }) depth!: number;
+
+  get rKey() {
+    return removeKeywork(this.yKey);
+  }
 
   get isKey() {
     return this.yKey === "id" || this.yKey === "_id";

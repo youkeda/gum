@@ -4,6 +4,7 @@ export default class JTBsonType extends Vue {
     innerType: string;
     yKey: string;
     depth: number;
+    readonly rKey: string;
     readonly isKey: boolean;
     readonly bsonClass: any;
     mounted(): void;

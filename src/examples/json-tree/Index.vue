@@ -4,7 +4,7 @@
     <div class="example">
       <json-tree
         :data="data"
-        :parser="undefined"
+        :parser="parser"
       ></json-tree>
     </div>
 
@@ -35,6 +35,27 @@ export default class App extends Vue {
 
   mounted() {
     console.log(this.data);
+    this.handleMysql();
+  }
+
+  handleMysql() {
+    const tableNames = new Set();
+    this.schema.map(item => {
+      tableNames.add(item.table);
+    });
+    result.results.map((item: any) => {
+      Object.keys(item).map(key => {
+        console.log("======", key);
+        for (let name of tableNames) {
+          let pre = `${name}-`;
+          if (key.startsWith(pre)) {
+            item[key.replace(pre, `<% ${name} %>`)] = item[key];
+            delete item[key];
+          }
+        }
+      });
+    });
+    console.log("-----", result.results);
   }
 
   parser(key: string) {

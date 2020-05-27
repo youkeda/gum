@@ -8,13 +8,13 @@
         slot="key"
         class="jt-key jt-key-date"
       >
-        {{ yKey }}
+        {{ rKey }}
       </div>
       <div
         slot="value"
         class="jt-value jt-value-object"
       >
-        {{ value }}
+        {{ value || "NULL"}}
       </div>
     </jt-wrapper>
   </div>
@@ -22,6 +22,7 @@
 <script lang="ts">
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 import { Tooltip } from "ant-design-vue";
+import { removeKeywork } from "../utils/handleKeyword";
 
 @Component({
   components: {
@@ -33,6 +34,10 @@ export default class JTStringType extends Vue {
   @Prop({ default: "" }) innerType!: string;
   @Prop({ default: "" }) yKey!: string;
   @Prop({ default: 0 }) depth!: number;
+
+  get rKey() {
+    return removeKeywork(this.yKey);
+  }
 
   get type() {
     return this.innerType || "Date";

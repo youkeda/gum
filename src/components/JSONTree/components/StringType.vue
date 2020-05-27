@@ -9,7 +9,7 @@
         class="jt-key jt-key-string"
         :class="{'jt-key-key': isKey}"
       >
-        {{ yKey }}
+        {{ rKey }}
       </div>
 
       <a-tooltip
@@ -32,6 +32,7 @@
 <script lang="ts">
 import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 import { Tooltip } from "ant-design-vue";
+import { removeKeywork } from "../utils/handleKeyword";
 
 @Component({
   components: {
@@ -44,6 +45,10 @@ export default class JTStringType extends Vue {
   @Prop({ default: "" }) yKey!: string;
   @Prop({ default: 0 }) depth!: number;
 
+  get rKey() {
+    return removeKeywork(this.yKey);
+  }
+
   get isKey() {
     return this.yKey === "id" || this.yKey === "_id";
   }
@@ -54,6 +59,9 @@ export default class JTStringType extends Vue {
 
   get formatValue() {
     if (!this.value) {
+      if (this.value === null) {
+        return "NULL";
+      }
       return "";
     }
     if (

@@ -7,6 +7,7 @@ export default class JTArrayType extends Vue {
     jtParser: ParserFunc;
     private localOpen;
     private matchs;
+    readonly rKey: string;
     readonly yValue: string;
     expand(): void;
     mounted(): void;

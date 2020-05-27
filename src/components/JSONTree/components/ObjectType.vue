@@ -42,6 +42,7 @@ import which from "./whichType";
 import Field from "../model/field";
 import { ParserFunc } from "../parser";
 import Match from "../model/match";
+import { removeKeywork } from "../utils/handleKeyword";
 
 const LIMIT_CLOSED = 5;
 @Component({
