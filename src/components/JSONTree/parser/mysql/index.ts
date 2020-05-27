@@ -10,7 +10,6 @@ export default function parser(
     };
   }
   key = key.replace(/<%[\s\S].*?%>/g, '');
-  console.log('key', key);
   for (let i = 0; i < schema.length; i++) {
     if (schema[i].name === key) {
       return MYSQL_TYPE[schema[i].type];

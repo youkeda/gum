@@ -55,7 +55,6 @@ export default class App extends Vue {
         }
       });
     });
-    console.log("-----", result.results);
   }
 
   parser(key: string) {
