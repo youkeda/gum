@@ -31,7 +31,7 @@
 .menubar {
   flex: none;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   overflow-x: scroll;
   background-color: #f7f7f7;
@@ -61,6 +61,12 @@
     }
     &.is-active {
       background-color: rgba(0, 0, 0, 0.1);
+    }
+    &:first-child {
+      margin-left: 0.4rem;
+    }
+    &:last-child {
+      margin-right: 0.4rem;
     }
   }
 }
