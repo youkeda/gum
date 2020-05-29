@@ -13,7 +13,7 @@
           class="jt-expand-icon"
           :class="{'isExapnd': localOpen}"
         ></span>
-        <div class="jt-key jt-key-array">{{ yKey }}</div>
+        <div class="jt-key jt-key-array">{{ rKey }}</div>
       </div>
       <div
         slot="value"
@@ -41,6 +41,7 @@ import which from "./whichType";
 import Field from "../model/field";
 import { ParserFunc } from "../parser";
 import Match from "../model/match";
+import { removeKeywork } from "../utils/handleKeyword";
 
 @Component({
   components: {}
@@ -53,6 +54,10 @@ export default class JTArrayType extends Vue {
 
   private localOpen: boolean = false;
   private matchs: Match[] = [];
+
+  get rKey() {
+    return removeKeywork(this.yKey);
+  }
 
   get yValue() {
     return `Array[${this.value.length}]`;

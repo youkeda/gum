@@ -4,5 +4,6 @@ export default class JSNumberType extends Vue {
     yKey: string;
     innerType: string;
     depth: number;
+    readonly rKey: string;
     readonly type: string;
 }

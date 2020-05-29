@@ -4,5 +4,6 @@ export default class JTStringType extends Vue {
     innerType: string;
     yKey: string;
     depth: number;
+    readonly rKey: string;
     readonly type: string;
 }

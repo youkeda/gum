@@ -1,80 +1,29 @@
 declare const _default: {
-    results: ({
-        _id: {
-            $oid: string;
-        };
-        time: string;
-        test1: boolean;
-        test2: number;
-        test3: number;
-        newField: {
-            _id: string;
-            name: string;
-        }[];
-        date: string;
-        name?: undefined;
-        key?: undefined;
-    } | {
-        _id: {
-            $oid: string;
-        };
-        time: string;
-        test1: string;
-        test2?: undefined;
-        test3?: undefined;
-        newField?: undefined;
-        date?: undefined;
-        name?: undefined;
-        key?: undefined;
-    } | {
-        _id: {
-            $oid: string;
-        };
-        date: string;
+    results: {
+        'ykd_teacher-id': number;
+        'ykd_teacher-name': string;
+        'ykd_teacher-gmt_created': null;
+        'ykd_teacher-gmt_modified': null;
+        'ykd_course-id': null;
+        'ykd_course-name': null;
+        'ykd_course-teacher_id': null;
+        'ykd_course-gmt_created': null;
+        'ykd_course-gmt_modified': null;
+    }[];
+    fields: {
+        catalog: string;
+        db: string;
+        table: string;
+        orgTable: string;
         name: string;
-        time?: undefined;
-        test1?: undefined;
-        test2?: undefined;
-        test3?: undefined;
-        newField?: undefined;
-        key?: undefined;
-    } | {
-        _id: {
-            $oid: string;
-        };
-        name: string;
-        time?: undefined;
-        test1?: undefined;
-        test2?: undefined;
-        test3?: undefined;
-        newField?: undefined;
-        date?: undefined;
-        key?: undefined;
-    } | {
-        _id: {
-            $oid: string;
-        };
-        time: string;
-        test1?: undefined;
-        test2?: undefined;
-        test3?: undefined;
-        newField?: undefined;
-        date?: undefined;
-        name?: undefined;
-        key?: undefined;
-    } | {
-        _id: {
-            $oid: string;
-        };
-        key: string;
-        time?: undefined;
-        test1?: undefined;
-        test2?: undefined;
-        test3?: undefined;
-        newField?: undefined;
-        date?: undefined;
-        name?: undefined;
-    })[];
-    fields: never[];
+        orgName: string;
+        charsetNr: number;
+        length: number;
+        type: number;
+        flags: number;
+        decimals: number;
+        zeroFill: boolean;
+        protocol41: boolean;
+    }[];
 };
 export default _default;

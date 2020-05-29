@@ -5,12 +5,13 @@
       value="value"
       valueClass="header-value"
       typeClass="header-type"
+      v-if="matchs && matchs.length > 0"
     >
       <div slot="key">key</div>
       <div slot="value"><i @mousedown="onHeaderDrag"></i>value</div>
       <div slot="type">type</div>
     </jt-wrapper>
-    <div class="json-tree-content">
+    <div class="json-tree-content" v-if="matchs && matchs.length > 0">
       <component
         v-for="(match, index) in matchs"
         :key="`line-${index}`"
@@ -19,6 +20,9 @@
         :value="match.value"
         :depth="0"
       ></component>
+    </div>
+    <div class="empty" v-else>
+      No Data
     </div>
   </div>
 </template>
@@ -29,7 +33,7 @@ import { ParserFunc } from './parser';
 import Match from './model/match';
 const DEFAULT_KEY_WIDTH = 300;
 @Component({
-  components: {}
+  components: {},
 })
 export default class JSONTree extends Vue {
   @Prop({ default: () => [] }) data!: any[];
@@ -37,7 +41,7 @@ export default class JSONTree extends Vue {
   @Provide('jtParser') jtParser?: ParserFunc = this.parser;
 
   private oWidth: any = {
-    key: DEFAULT_KEY_WIDTH
+    key: DEFAULT_KEY_WIDTH,
   };
   @Provide('jtWidth') jtWidth: any = this.oWidth;
 
@@ -58,7 +62,7 @@ export default class JSONTree extends Vue {
       this.matchs.push({
         ...which(undefined, item, this.jtParser),
         key: index,
-        value: item
+        value: item,
       });
     });
 
@@ -122,6 +126,14 @@ export default class JSONTree extends Vue {
   .json-tree-content {
     height: calc(100% - 26px);
     overflow-y: scroll;
+  }
+
+  .empty {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
   }
 }
 </style>

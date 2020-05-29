@@ -21,7 +21,7 @@
             <template slot="title">
               <span>粗体</span>
             </template>
-            <i class="iconfont iconbold" />
+            <i class="iconfont iconfont-editor iconbold" />
           </a-tooltip>
         </button>
 
@@ -34,7 +34,7 @@
             <template slot="title">
               <span>斜体</span>
             </template>
-            <i class="iconfont iconItalic" />
+            <i class="iconfont iconfont-editor iconItalic" />
           </a-tooltip>
         </button>
 
@@ -47,7 +47,7 @@
             <template slot="title">
               <span>删除线</span>
             </template>
-            <i class="iconfont iconstrikethrough"></i>
+            <i class="iconfont iconfont-editor iconstrikethrough"></i>
           </a-tooltip>
         </button>
 
@@ -60,7 +60,7 @@
             <template slot="title">
               <span>下划线</span>
             </template>
-            <i class="iconfont iconunderline" />
+            <i class="iconfont iconfont-editor iconunderline" />
           </a-tooltip>
         </button>
 
@@ -73,7 +73,7 @@
             <template slot="title">
               <span>行内代码</span>
             </template>
-            <i class="iconfont iconcode"></i>
+            <i class="iconfont iconfont-editor iconcode"></i>
           </a-tooltip>
         </button>
 
@@ -86,7 +86,7 @@
             <template slot="title">
               <span>段落</span>
             </template>
-            <i class="iconfont iconparagraph"></i>
+            <i class="iconfont iconfont-editor iconparagraph"></i>
           </a-tooltip>
         </button>
 
@@ -138,7 +138,7 @@
             <template slot="title">
               <span>无序列表</span>
             </template>
-            <i class="iconfont iconul" />
+            <i class="iconfont iconfont-editor iconul" />
           </a-tooltip>
         </button>
 
@@ -151,7 +151,7 @@
             <template slot="title">
               <span>有序列表</span>
             </template>
-            <i class="iconfont iconol" />
+            <i class="iconfont iconfont-editor iconol" />
           </a-tooltip>
         </button>
 
@@ -164,7 +164,7 @@
             <template slot="title">
               <span>引用</span>
             </template>
-            <i class="iconfont iconquote" />
+            <i class="iconfont iconfont-editor iconquote" />
           </a-tooltip>
         </button>
 
@@ -179,7 +179,7 @@
             </template>
             <i
               style="font-size:20px;"
-              class="iconfont iconcodesquareo"
+              class="iconfont iconfont-editor iconcodesquareo"
             />
           </a-tooltip>
         </button>
@@ -193,7 +193,7 @@
             <template slot="title">
               <span>超链接</span>
             </template>
-            <i class="iconfont iconlink" />
+            <i class="iconfont iconfont-editor iconlink" />
           </a-tooltip>
         </button>
 
@@ -205,7 +205,7 @@
             <template slot="title">
               <span>分割线</span>
             </template>
-            <i class="iconfont iconhr"></i>
+            <i class="iconfont iconfont-editor iconhr"></i>
           </a-tooltip>
         </button>
 
@@ -217,7 +217,7 @@
             <template slot="title">
               <span>撤销</span>
             </template>
-            <i class="iconfont iconundo" />
+            <i class="iconfont iconfont-editor iconundo" />
           </a-tooltip>
         </button>
 
@@ -229,7 +229,7 @@
             <template slot="title">
               <span>重做</span>
             </template>
-            <i class="iconfont iconredo" />
+            <i class="iconfont iconfont-editor iconredo" />
           </a-tooltip>
         </button>
 
@@ -248,7 +248,7 @@
                 <template slot="title">
                   <span>插入图片</span>
                 </template>
-                <i class="iconfont iconpic" />
+                <i class="iconfont iconfont-editor iconpic" />
               </a-tooltip>
             </template>
           </Uploader>
@@ -262,7 +262,7 @@
             <template slot="title">
               <span>添加表情</span>
             </template>
-            <i class="iconfont iconexpression" />
+            <i class="iconfont iconfont-editor iconexpression" />
           </a-tooltip>
         </button>
       </div>
@@ -297,7 +297,7 @@
             @click="setLinkUrl(commands.link, null)"
             type="button"
           >
-            <i class="iconfont iconremove" />
+            <i class="iconfont iconfont-editor iconremove" />
           </button>
         </form>
 
@@ -308,7 +308,7 @@
             :class="{ 'is-active': isActive.link() }"
           >
             <span>{{ isActive.link() ? '更新链接' : '添加链接' }}</span>
-            <i class="iconfont iconlink" />
+            <i class="iconfont iconfont-editor iconlink" />
           </button>
         </template>
       </div>
@@ -677,6 +677,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import './styles/editor.scss';
-@import './styles/menububble.scss';
+@import "./styles/editor.scss";
+@import "./styles/menububble.scss";
 </style>
