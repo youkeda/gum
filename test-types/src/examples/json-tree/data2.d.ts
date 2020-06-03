@@ -1,9 +1,7 @@
 declare const _default: {
     results: {
-        'ykd_teacher-id': number;
-        'ykd_teacher-name': string;
-        'ykd_teacher-gmt_created': null;
-        'ykd_teacher-gmt_modified': null;
+        _id: string;
+        names: string[];
     }[];
     fields: {
         catalog: string;

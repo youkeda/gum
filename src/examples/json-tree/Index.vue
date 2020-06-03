@@ -4,7 +4,7 @@
     <div class="example">
       <json-tree
         :data="data"
-        :parser="parser"
+        :parser="null"
       ></json-tree>
     </div>
 
@@ -27,15 +27,15 @@ import { EJSON } from "bson";
 })
 export default class App extends Vue {
   // private data: any[] = EJSON.parse(JSON.stringify(result.results));
-  // private data: any = EJSON.parse(EJSON.stringify(result.results), {
-  //   relaxed: false
-  // });
-  private data: any = result.results;
-  private schema: any[] = result.fields;
+  private data: any = EJSON.parse(EJSON.stringify(result2.results), {
+    relaxed: false
+  });
+  // private data: any = result.results;
+  private schema: any[] = result2.fields;
 
   mounted() {
-    console.log(this.data);
-    this.handleMysql();
+    // console.log(this.data);
+    // this.handleMysql();
   }
 
   handleMysql() {

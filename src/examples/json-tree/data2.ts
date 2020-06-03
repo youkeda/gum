@@ -1,28 +1,16 @@
 export default {
   results: [
     {
-      'ykd_teacher-id': 1,
-      'ykd_teacher-name': '不知火舞',
-      'ykd_teacher-gmt_created': null,
-      'ykd_teacher-gmt_modified': null,
+      _id: 'CLOTHING',
+      names: [
+        '杰克琼斯运动寸衫',
+        '海澜之家夏季最新款寸衫',
+        '夏季气质碎花裙子夏装',
+      ],
     },
     {
-      'ykd_teacher-id': 2,
-      'ykd_teacher-name': '兰陵王',
-      'ykd_teacher-gmt_created': null,
-      'ykd_teacher-gmt_modified': null,
-    },
-    {
-      'ykd_teacher-id': 3,
-      'ykd_teacher-name': '王昭君',
-      'ykd_teacher-gmt_created': null,
-      'ykd_teacher-gmt_modified': null,
-    },
-    {
-      'ykd_teacher-id': 4,
-      'ykd_teacher-name': '蔡文姬',
-      'ykd_teacher-gmt_created': null,
-      'ykd_teacher-gmt_modified': null,
+      _id: 'SHOE',
+      names: ['安踏最新运动款跑步鞋', '亚瑟士最新款运动鞋', '新伯伦最新运动鞋'],
     },
   ],
   fields: [
