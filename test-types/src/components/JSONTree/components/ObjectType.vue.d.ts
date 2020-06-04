@@ -1,5 +1,5 @@
-import { Vue } from "vue-property-decorator";
-import { ParserFunc } from "../parser";
+import { Vue } from 'vue-property-decorator';
+import { ParserFunc } from '../parser';
 export default class JCObjectType extends Vue {
     value: any;
     yKey: string;

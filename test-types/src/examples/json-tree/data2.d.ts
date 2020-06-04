@@ -1,7 +1,19 @@
 declare const _default: {
     results: {
-        _id: string;
-        names: string[];
+        _id: {
+            $oid: string;
+        };
+        name: string;
+        nickName: string;
+        info: {
+            college: string;
+            project: string;
+        };
+        learnedSections: string[];
+        sections: {
+            _id: string;
+            name: string;
+        }[];
     }[];
     fields: {
         catalog: string;

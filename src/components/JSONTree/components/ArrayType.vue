@@ -1,24 +1,11 @@
 <template>
   <div class="jt-type">
-    <jt-wrapper
-      type="Array"
-      :depth="depth"
-    >
-      <div
-        slot="key"
-        class="jt-expand"
-        @click="expand"
-      >
-        <span
-          class="jt-expand-icon"
-          :class="{'isExapnd': localOpen}"
-        ></span>
+    <jt-wrapper type="Array" :depth="depth">
+      <div slot="key" class="jt-expand" @click="expand">
+        <span class="jt-expand-icon" :class="{ isExapnd: localOpen }"></span>
         <div class="jt-key jt-key-array">{{ rKey }}</div>
       </div>
-      <div
-        slot="value"
-        class="jt-value-array"
-      >
+      <div slot="value" class="jt-value-array">
         {{ yValue }}
       </div>
     </jt-wrapper>
@@ -36,21 +23,21 @@
   </div>
 </template>
 <script lang="ts">
-import { Component, Vue, Watch, Prop, Inject } from "vue-property-decorator";
-import which from "./whichType";
-import Field from "../model/field";
-import { ParserFunc } from "../parser";
-import Match from "../model/match";
-import { removeKeywork } from "../utils/handleKeyword";
+import { Component, Vue, Watch, Prop, Inject } from 'vue-property-decorator';
+import which from './whichType';
+import Field from '../model/field';
+import { ParserFunc } from '../parser';
+import Match from '../model/match';
+import { removeKeywork } from '../utils/handleKeyword';
 
 @Component({
-  components: {}
+  components: {},
 })
 export default class JTArrayType extends Vue {
   @Prop({ default: () => [] }) value!: any[];
-  @Prop({ default: "" }) yKey!: string;
+  @Prop({ default: '' }) yKey!: string;
   @Prop({ default: 0 }) depth!: number;
-  @Inject("jtParser") jtParser!: ParserFunc;
+  @Inject('jtParser') jtParser!: ParserFunc;
 
   private localOpen: boolean = false;
   private matchs: Match[] = [];
@@ -71,7 +58,7 @@ export default class JTArrayType extends Vue {
     this.initMatch();
   }
 
-  @Watch("data")
+  @Watch('data')
   onDataChange() {
     this.initMatch();
   }
@@ -82,7 +69,7 @@ export default class JTArrayType extends Vue {
       this.matchs.push({
         ...which(undefined, item, this.jtParser),
         key: index,
-        value: item
+        value: item,
       });
     });
   }

@@ -1,25 +1,11 @@
 <template>
   <div class="jt-type">
-    <jt-wrapper
-      type="Object"
-      :depth="depth"
-      :class="{ 'jt-sep': localOpen }"
-    >
-      <div
-        slot="key"
-        class="jt-expand"
-        @click="expand"
-      >
-        <span
-          class="jt-expand-icon "
-          :class="{ isExapnd: localOpen }"
-        ></span>
+    <jt-wrapper type="Object" :depth="depth" :class="{ 'jt-sep': localOpen }">
+      <div slot="key" class="jt-expand" @click="expand">
+        <span class="jt-expand-icon " :class="{ isExapnd: localOpen }"></span>
         <div class="jt-key jt-key-object">{{ keyTxt }}</div>
       </div>
-      <div
-        slot="value"
-        class="jt-value jt-value-object"
-      >
+      <div slot="value" class="jt-value jt-value-object">
         {{ yValue }}
       </div>
     </jt-wrapper>
@@ -37,28 +23,28 @@
   </div>
 </template>
 <script lang="ts">
-import { Component, Vue, Watch, Prop, Inject } from "vue-property-decorator";
-import which from "./whichType";
-import Field from "../model/field";
-import { ParserFunc } from "../parser";
-import Match from "../model/match";
-import { removeKeywork } from "../utils/handleKeyword";
+import { Component, Vue, Watch, Prop, Inject } from 'vue-property-decorator';
+import which from './whichType';
+import Field from '../model/field';
+import { ParserFunc } from '../parser';
+import Match from '../model/match';
+import { removeKeywork } from '../utils/handleKeyword';
 
 const LIMIT_CLOSED = 5;
 @Component({
-  components: {}
+  components: {},
 })
 export default class JCObjectType extends Vue {
   @Prop({ default: () => {} }) value!: any;
-  @Prop({ default: "" }) yKey!: string;
+  @Prop({ default: '' }) yKey!: string;
   @Prop({ default: 0 }) depth!: number;
-  @Inject("jtParser") jtParser!: ParserFunc;
+  @Inject('jtParser') jtParser!: ParserFunc;
 
   private localOpen: boolean = false;
   private matchs: Match[] = [];
 
   get keyTxt() {
-    if (this.yKey) {
+    if (this.yKey || `${this.yKey}` === '0') {
       return this.yKey;
     }
     if (this.value.id) {
@@ -82,7 +68,7 @@ export default class JCObjectType extends Vue {
     this.initMatch();
   }
 
-  @Watch("data")
+  @Watch('data')
   onDataChange() {
     this.initMatch();
   }
@@ -93,14 +79,14 @@ export default class JCObjectType extends Vue {
       this.matchs.push({
         ...which(key, this.value[key], this.jtParser),
         key: key,
-        value: this.value[key]
+        value: this.value[key],
       });
     });
   }
 }
 </script>
 <style lang="scss" scoped>
-@import "./style.scss";
+@import './style.scss';
 
 .jt-type {
   .expand-icon {

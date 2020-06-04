@@ -1,6 +1,6 @@
 {
   "name": "gum-ui",
-  "version": "0.9.3",
+  "version": "0.9.4",
   "private": false,
   "main": "./lib/gum.umd.min.js",
   "typings": "./types/index.d.ts",
