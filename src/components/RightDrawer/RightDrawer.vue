@@ -7,7 +7,7 @@
       :closable="false"
       @close="onClose"
       :visible="visible"
-      :wrapClassName="className"
+      :wrapClassName="`${className} custom_drawer`"
     >
       <div class="drawer_title" slot="title">
         <slot name="title" />
@@ -50,7 +50,7 @@ export default class RightDrawer extends Vue {
 
 <style lang="scss" scope>
 .ant-drawer-content {
-  overflow: visible;
+  // overflow: visible;
   .ant-drawer-wrapper-body {
     display: flex;
     flex-direction: column;
@@ -109,6 +109,14 @@ export default class RightDrawer extends Vue {
         }
       }
     }
+  }
+}
+</style>
+
+<style lang="scss">
+.custom_drawer {
+  .ant-drawer-content {
+    overflow: visible;
   }
 }
 </style>

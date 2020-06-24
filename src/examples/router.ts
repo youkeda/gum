@@ -22,7 +22,7 @@ export default new Router({
         import(/* webpackChunkName: "home" */ '@/examples/rich-text/Index.vue')
     },
     {
-      path: '/demo',
+      path: '/rightdraw',
       component: () =>
         import(/* webpackChunkName: "home" */ '@/examples/drawer/Drawer.vue')
     }
