@@ -7,6 +7,7 @@
     >在computed中定义的nowdate变量，在bindPickerChange 中修改nowdate却不管用？</div>
     <RichText
       ref="editor"
+      :customMenu="['emoji']"
       :callback="getContent"
       :content="content"
       :fixMenu="fixMenu"
@@ -39,6 +40,9 @@ export default class App extends Vue {
       top: '50px',
       left: '50px',
       right: '50px',
+    },
+    customStyle: {
+      background: 'transparent',
     },
   };
   content: string = `

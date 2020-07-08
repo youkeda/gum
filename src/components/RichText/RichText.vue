@@ -13,7 +13,7 @@
         :style="menuBarStyle"
       >
         <button
-          class="menubar__button"
+          class="menubar__button hide-btn"
           :class="{ 'is-active': isActive.bold() }"
           @click="commands.bold"
         >
@@ -26,7 +26,7 @@
         </button>
 
         <button
-          class="menubar__button"
+          class="menubar__button hide-btn"
           :class="{ 'is-active': isActive.italic() }"
           @click="commands.italic"
         >
@@ -39,7 +39,7 @@
         </button>
 
         <button
-          class="menubar__button"
+          class="menubar__button hide-btn"
           :class="{ 'is-active': isActive.strike() }"
           @click="commands.strike"
         >
@@ -52,7 +52,7 @@
         </button>
 
         <button
-          class="menubar__button"
+          class="menubar__button hide-btn"
           :class="{ 'is-active': isActive.underline() }"
           @click="commands.underline"
         >
@@ -65,7 +65,7 @@
         </button>
 
         <button
-          class="menubar__button"
+          class="menubar__button hide-btn"
           :class="{ 'is-active': isActive.code() }"
           @click="commands.code"
         >
@@ -78,7 +78,7 @@
         </button>
 
         <button
-          class="menubar__button"
+          class="menubar__button hide-btn"
           :class="{ 'is-active': isActive.paragraph() }"
           @click="commands.paragraph"
         >
@@ -91,7 +91,7 @@
         </button>
 
         <button
-          class="menubar__button"
+          class="menubar__button hide-btn"
           :class="{ 'is-active': isActive.heading({ level: 1 }) }"
           @click="commands.heading({ level: 1 })"
         >
@@ -104,7 +104,7 @@
         </button>
 
         <button
-          class="menubar__button"
+          class="menubar__button hide-btn"
           :class="{ 'is-active': isActive.heading({ level: 2 }) }"
           @click="commands.heading({ level: 2 })"
         >
@@ -117,7 +117,7 @@
         </button>
 
         <button
-          class="menubar__button"
+          class="menubar__button hide-btn"
           :class="{ 'is-active': isActive.heading({ level: 3 }) }"
           @click="commands.heading({ level: 3 })"
         >
@@ -130,7 +130,7 @@
         </button>
 
         <button
-          class="menubar__button"
+          class="menubar__button hide-btn"
           :class="{ 'is-active': isActive.bullet_list() }"
           @click="commands.bullet_list"
         >
@@ -143,7 +143,7 @@
         </button>
 
         <button
-          class="menubar__button"
+          class="menubar__button hide-btn"
           :class="{ 'is-active': isActive.ordered_list() }"
           @click="commands.ordered_list"
         >
@@ -156,7 +156,7 @@
         </button>
 
         <button
-          class="menubar__button"
+          class="menubar__button hide-btn"
           :class="{ 'is-active': isActive.blockquote() }"
           @click="commands.blockquote"
         >
@@ -169,7 +169,7 @@
         </button>
 
         <button
-          class="menubar__button"
+          class="menubar__button hide-btn"
           :class="{ 'is-active': isActive.code_block() }"
           @click="codeHint(commands.code_block)"
         >
@@ -185,7 +185,7 @@
         </button>
 
         <button
-          class="menubar__button"
+          class="menubar__button hide-btn"
           :class="{ 'is-active': isActive.link() }"
           @click="linkClick"
         >
@@ -198,7 +198,7 @@
         </button>
 
         <button
-          class="menubar__button"
+          class="menubar__button hide-btn"
           @click="commands.horizontal_rule"
         >
           <a-tooltip placement="bottom">
@@ -210,7 +210,7 @@
         </button>
 
         <button
-          class="menubar__button"
+          class="menubar__button hide-btn"
           @click="commands.undo"
         >
           <a-tooltip placement="bottom">
@@ -222,7 +222,7 @@
         </button>
 
         <button
-          class="menubar__button"
+          class="menubar__button hide-btn"
           @click="commands.redo"
         >
           <a-tooltip placement="bottom">
@@ -234,7 +234,8 @@
         </button>
 
         <button
-          class="menubar__button"
+          class="menubar__button hide-btn"
+          id="richTextMenuImage"
           @click="showImagePrompt(commands.image)"
         >
           <Uploader
@@ -255,7 +256,8 @@
         </button>
 
         <button
-          class="menubar__button"
+          class="menubar__button hide-btn"
+          id="richTextMenuEmoji"
           @click="pickEmoji(commands.emoji, $event)"
         >
           <a-tooltip placement="bottom">
@@ -363,6 +365,10 @@ message.config({
 
 export default {
   props: {
+    customMenu: {
+      type: Array,
+      default: () => []
+    },
     // publish: {
     //   type: Function,
     //   default: null
@@ -396,6 +402,8 @@ export default {
   },
   data() {
     return {
+      // customMenu: [],
+      // customMenu: ['emoji', 'image'],
       // failedImgList: [],
       // showImageHint: false,
       isActive: false,
@@ -464,6 +472,14 @@ export default {
     }
   },
   watch: {
+    customMenu: {
+      handler(value) {
+        this.$nextTick(() => {
+          this.handleCustomMenu()
+        })
+      },
+      immediate: true,
+    },
     fixMenu: {
       handler(value) {
         if (value) {
@@ -506,6 +522,20 @@ export default {
     });
   },
   methods: {
+    handleCustomMenu() {
+      if (this.customMenu && Array.isArray(this.customMenu) && this.customMenu.length > 0) {
+        this.customMenu.forEach((menu, index) => {
+          const id = 'richTextMenu' + menu.substr(0, 1).toUpperCase() + menu.substr(1);
+          const btn = document.getElementById(id)
+          btn.classList.remove('hide-btn');
+          btn.style.order = index;
+        })
+      } else {
+        Array.from(document.querySelectorAll('.menubar__button')).forEach(btn => {
+          btn.classList.contains('hide-btn') && btn.classList.remove('hide-btn');
+        })
+      }
+    },
     removeContent() {
       this.editor.setContent('');
     },
@@ -677,6 +707,10 @@ export default {
 </script>
 
 <style lang="scss">
-@import "./styles/editor.scss";
-@import "./styles/menububble.scss";
+@import './styles/editor.scss';
+@import './styles/menububble.scss';
+
+.menubar .menubar__button.hide-btn {
+  display: none;
+}
 </style>
